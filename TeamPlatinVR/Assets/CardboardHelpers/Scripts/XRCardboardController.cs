@@ -18,7 +18,7 @@ public class XRCardboardController : MonoBehaviour
     
     private Camera camera;
     private GameObject _gazedAtObject = null;
-    [SerializeField] private float MAX_DISTANCE = 10;
+    [SerializeField] private float MAX_DISTANCE = 100;
 
     public static XRCardboardController Instance { get; private set; }
 
