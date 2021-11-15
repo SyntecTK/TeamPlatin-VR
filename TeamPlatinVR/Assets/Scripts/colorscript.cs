@@ -8,8 +8,9 @@ public class colorscript : MonoBehaviour
     public Color onColor;
     public Color offColor;
     public Color waitColor;
-
     public Image gazeImage;
+
+    private GameManager gameManager;
 
     private bool gaze;
     private float timer;
@@ -17,7 +18,7 @@ public class colorscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -41,7 +42,9 @@ public class colorscript : MonoBehaviour
 
     public void ChangeOnGaze()
     {
-        GetComponent<Renderer>().material.color = onColor;
+        //GetComponent<Renderer>().material.color = onColor;
+        gameManager.MovePlayer(this.transform.position);
+
     }
 
     public void ChangeOffGaze()
