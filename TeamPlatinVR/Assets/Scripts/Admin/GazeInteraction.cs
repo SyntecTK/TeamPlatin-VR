@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class colorscript : MonoBehaviour
+public class GazeInteraction : MonoBehaviour
 {
-    public Color onColor;
+   public Color onColor;
     public Color offColor;
     public Color waitColor;
     public Image gazeImage;
@@ -42,8 +42,16 @@ public class colorscript : MonoBehaviour
 
     public void ChangeOnGaze()
     {
-        //GetComponent<Renderer>().material.color = onColor;
-        gameManager.MovePlayer(this.transform.position);
+        switch(this.tag)
+        {
+            case "teddy":
+                this.transform.position += new Vector3(0, 1, 0);
+                break;
+            case "MovePoint":
+                gameManager.MovePlayer(this.transform.position);
+                break;
+        }
+        
 
     }
 
