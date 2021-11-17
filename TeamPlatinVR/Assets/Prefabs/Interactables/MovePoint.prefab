@@ -128,8 +128,8 @@ MonoBehaviour:
   onHoverExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: colorscript, Assembly-CSharp
+      - m_Target: {fileID: 7675115991126994483}
+        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
         m_MethodName: ChangeOffGaze
         m_Mode: 1
         m_Arguments:
@@ -177,4 +177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gazeImage: {fileID: 0}
   usedButton: {r: 0, g: 0, b: 0, a: 0}
+  portraitMaterial: {fileID: 0}
+  winSound: {fileID: 0}
   duration: 0

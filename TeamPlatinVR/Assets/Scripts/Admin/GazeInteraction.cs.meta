@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - gazeImage: {instanceID: 0}
   - portraitMaterial: {fileID: 2100000, guid: 9abebfa626c35e342b6b1e1f75fb5d29, type: 2}
+  - winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

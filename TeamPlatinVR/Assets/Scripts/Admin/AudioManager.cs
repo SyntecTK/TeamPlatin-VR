@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
         radioSound = radio.GetComponent<AudioSource>();
         ambienceSound = ambience.GetComponent<AudioSource>();
 
-        StartCoroutine(ChangeSounds());
+        //StartCoroutine(ChangeSounds());
     }
 
     // Update is called once per frame
@@ -43,12 +43,12 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(10);
         uhrSound.clip = uhrFast;
     	uhrSound.Play();
-        Debug.Log("Play Fast");
+        //Debug.Log("Play Fast");
 
         yield return new WaitForSeconds(uhrSound.clip.length);
         uhrSound.clip = uhrBell;
     	uhrSound.Play();
-        Debug.Log("Play Bell");
+        //Debug.Log("Play Bell");
 
         yield return new WaitForSeconds(3);
         vögelSound.Stop();

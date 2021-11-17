@@ -8,10 +8,21 @@ public class GazeInteraction : MonoBehaviour
     public Image gazeImage;
     public Color usedButton;
     public Material portraitMaterial;
+    public Material newSkybox;
+    public AudioClip winSound;
 
     private Color baseColor;
     private GameManager gameManager;
+    //Clock
+    private GameObject clock_hand_long;
+    private GameObject clock_hand_short;
+    private Quaternion chl_startRot;
+    private Quaternion chs_startRot;
+
+    //Teddy
     private Rigidbody rigidbody;
+
+    //Radio
     private GameObject pointer;
     private Vector3 pointerStartPos;
     private AudioSource radio;
@@ -30,10 +41,17 @@ public class GazeInteraction : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rigidbody = GetComponent<Rigidbody>();
         radio = GetComponentInParent<AudioSource>();
-        pushStrength = 100f;
+        
         pointer = GameObject.Find("Pointer");
         pointerStartPos = pointer.transform.position;
+
+        clock_hand_long = GameObject.Find("Big_Pointer");
+        chl_startRot = clock_hand_long.transform.rotation;
+        clock_hand_short = GameObject.Find("Small_Pointer");
+        chs_startRot = clock_hand_short.transform.rotation;
+
         puzzleSolved = false;
+        pushStrength = 100f;
     }
 
     // Update is called once per frame
@@ -57,6 +75,7 @@ public class GazeInteraction : MonoBehaviour
 
     public void ChangeOnGaze()
     {
+        Vector3 rotation = new Vector3(0, 0, 60.0f);
         switch(this.tag)
         {
             case "Teddy":
@@ -81,12 +100,32 @@ public class GazeInteraction : MonoBehaviour
                     case "Button 4":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.09f);
                         radio.Play();
-                        puzzleSolved = true;
-                        CheckPuzzleStatus();
                         break;
                     case "Button 5":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.12f);
                         break;
+                }
+                break;
+            case "Clock_Gear01":
+                clock_hand_long.transform.Rotate(rotation, Space.Self);
+                //Debug.Log("Long Rotation: " + clock_hand_long.transform.eulerAngles.z);
+                if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
+                clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
+                {
+                    //Debug.Log("Solved Long!");
+                    puzzleSolved = true;
+                    CheckPuzzleStatus();
+                }
+                break;
+            case "Clock_Gear02":
+                clock_hand_short.transform.Rotate(rotation, Space.Self);
+                //Debug.Log("Short Rotation: " + clock_hand_short.transform.eulerAngles.z);
+                if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
+                clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
+                {
+                    //Debug.Log("Solved Long!");
+                    puzzleSolved = true;
+                    CheckPuzzleStatus();
                 }
                 break;
             case "Portrait":
@@ -123,8 +162,14 @@ public class GazeInteraction : MonoBehaviour
     {
         if(puzzleSolved)
         {
-            //Debug.Log("Puzzle Solved");
             GameObject.Find("Portrait").GetComponent<Renderer>().material = portraitMaterial;
+            GameObject.Find("Portrait").GetComponent<AudioSource>().Play();
+
+            AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
+            clockSounds.clip = winSound;
+            clockSounds.Play();
+
+            RenderSettings.skybox = skyBoxMat;
         }
     }
 }
