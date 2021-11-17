@@ -3,7 +3,9 @@ guid: acb330521ab84ec4fb4c7a3dcf221dc8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gazeImage: {instanceID: 0}
+  - portraitMaterial: {fileID: 2100000, guid: 9abebfa626c35e342b6b1e1f75fb5d29, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
