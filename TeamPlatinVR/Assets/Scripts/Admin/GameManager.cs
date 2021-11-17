@@ -20,6 +20,6 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = location;
+        player.transform.position = new Vector3(location.x, location.y - 1, location.z);
     }
 }

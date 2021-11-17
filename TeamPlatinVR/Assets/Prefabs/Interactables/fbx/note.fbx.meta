@@ -5,15 +5,25 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Note
+    second: {fileID: 2100000, guid: 4e095b7bdb98d774d9e9b7a8921cd80e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Note_bg
+    second: {fileID: 2100000, guid: db052820d8633aa4fb9bf431ea10499b, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: note
-    second: {fileID: 2800000, guid: afdab40bbe424bc40aebc8304bb2b263, type: 3}
+    second: {fileID: 2800000, guid: 32a7b6662ba92b7419df947c75962eed, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: note_bg
-    second: {fileID: 2800000, guid: 64b66d09c1b0b0c44a9df168a0ec3a20, type: 3}
+    second: {fileID: 2800000, guid: a25c48c9e6e62e247a605419dabad984, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

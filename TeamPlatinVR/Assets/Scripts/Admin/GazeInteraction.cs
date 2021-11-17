@@ -129,11 +129,11 @@ public class GazeInteraction : MonoBehaviour
                         break;
                 }
                 break;
-            case "Clock_Gear01":
+            case "Clock_Gear02":
                 clock_hand_long.transform.Rotate(rotation, Space.Self);
                 GetComponent<AudioSource>().Play();
                 //Debug.Log("Long Rotation: " + clock_hand_long.transform.eulerAngles.z);
-                if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
+                if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
                     //Debug.Log("Solved Long!");
@@ -141,11 +141,11 @@ public class GazeInteraction : MonoBehaviour
                     CheckPuzzleStatus();
                 }
                 break;
-            case "Clock_Gear02":
+            case "Clock_Gear01":
                 clock_hand_short.transform.Rotate(rotation, Space.Self);
                 GetComponent<AudioSource>().Play();
                 //Debug.Log("Short Rotation: " + clock_hand_short.transform.eulerAngles.z);
-                if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
+                if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
                     //Debug.Log("Solved Long!");
@@ -192,6 +192,7 @@ public class GazeInteraction : MonoBehaviour
             GameObject.Find("Portrait").GetComponent<BoxCollider>().enabled = true;
 
             AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
+            clockSounds.loop = false;
             clockSounds.clip = winSound;
             clockSounds.Play();
 
