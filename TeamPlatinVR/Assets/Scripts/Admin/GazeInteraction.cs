@@ -11,6 +11,14 @@ public class GazeInteraction : MonoBehaviour
     public Material newSkybox;
     public AudioClip winSound;
 
+    public AudioClip moveSound;
+
+    public AudioClip radio01;
+    public AudioClip radio02;
+    public AudioClip radio03;
+    public AudioClip radio04;
+    public AudioClip radio05;
+
     private Color baseColor;
     private GameManager gameManager;
     //Clock
@@ -83,6 +91,7 @@ public class GazeInteraction : MonoBehaviour
                 break;
             case "MovePoint":
                 gameManager.MovePlayer(this.transform.position);
+                GetComponent<AudioSource>().Play();
                 break;
             case "Button": 
                 StartCoroutine(ChangeButtonColor());
@@ -90,24 +99,39 @@ public class GazeInteraction : MonoBehaviour
                 {
                     case "Button":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0);
+                        radio.Stop();
+                        radio.clip = radio01;
+                        radio.Play();
                         break;
                     case "Button 2":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.03f);
+                        radio.Stop();
+                        radio.clip = radio02;
+                        radio.Play();
                         break;
                     case "Button 3":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.06f);
+                        radio.Stop();
+                        radio.clip = radio03;
+                        radio.Play();
                         break;
                     case "Button 4":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.09f);
+                        radio.Stop();
+                        radio.clip = radio04;
                         radio.Play();
                         break;
                     case "Button 5":
                         pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.12f);
+                        radio.Stop();
+                        radio.clip = radio05;
+                        radio.Play();
                         break;
                 }
                 break;
             case "Clock_Gear01":
                 clock_hand_long.transform.Rotate(rotation, Space.Self);
+                GetComponent<AudioSource>().Play();
                 //Debug.Log("Long Rotation: " + clock_hand_long.transform.eulerAngles.z);
                 if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
@@ -119,6 +143,7 @@ public class GazeInteraction : MonoBehaviour
                 break;
             case "Clock_Gear02":
                 clock_hand_short.transform.Rotate(rotation, Space.Self);
+                GetComponent<AudioSource>().Play();
                 //Debug.Log("Short Rotation: " + clock_hand_short.transform.eulerAngles.z);
                 if(clock_hand_long.transform.eulerAngles.z == 94.06672f &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
@@ -164,12 +189,13 @@ public class GazeInteraction : MonoBehaviour
         {
             GameObject.Find("Portrait").GetComponent<Renderer>().material = portraitMaterial;
             GameObject.Find("Portrait").GetComponent<AudioSource>().Play();
+            GameObject.Find("Portrait").GetComponent<BoxCollider>().enabled = true;
 
             AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
             clockSounds.clip = winSound;
             clockSounds.Play();
 
-            RenderSettings.skybox = skyBoxMat;
+            RenderSettings.skybox = newSkybox;
         }
     }
 }
