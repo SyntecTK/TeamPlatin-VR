@@ -132,11 +132,9 @@ public class GazeInteraction : MonoBehaviour
             case "Clock_Gear02":
                 clock_hand_long.transform.Rotate(rotation, Space.Self);
                 GetComponent<AudioSource>().Play();
-                //Debug.Log("Long Rotation: " + clock_hand_long.transform.eulerAngles.z);
                 if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
-                    //Debug.Log("Solved Long!");
                     puzzleSolved = true;
                     CheckPuzzleStatus();
                 }
@@ -144,11 +142,9 @@ public class GazeInteraction : MonoBehaviour
             case "Clock_Gear01":
                 clock_hand_short.transform.Rotate(rotation, Space.Self);
                 GetComponent<AudioSource>().Play();
-                //Debug.Log("Short Rotation: " + clock_hand_short.transform.eulerAngles.z);
                 if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
-                    //Debug.Log("Solved Long!");
                     puzzleSolved = true;
                     CheckPuzzleStatus();
                 }
