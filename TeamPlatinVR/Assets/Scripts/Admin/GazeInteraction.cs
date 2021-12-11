@@ -35,6 +35,9 @@ public class GazeInteraction : MonoBehaviour
     private Vector3 pointerStartPos;
     private AudioSource radio;
 
+    //Lampe
+    bool lightOn;
+
     public float duration;
 
     private float pushStrength;
@@ -52,6 +55,8 @@ public class GazeInteraction : MonoBehaviour
         
         pointer = GameObject.Find("Pointer");
         pointerStartPos = pointer.transform.position;
+
+        lightOn = false;
 
         clock_hand_long = GameObject.Find("Big_Pointer");
         chl_startRot = clock_hand_long.transform.rotation;
@@ -155,7 +160,17 @@ public class GazeInteraction : MonoBehaviour
                 //
                 break;
             case "Lamp":
-                Debug.Log("Lampe angeguckt!");
+                if(lightOn)
+                {
+                    GetComponentInChildren<Light>().enabled = false;
+                    lightOn = false;
+                }
+                else if(!lightOn)
+                {
+                    GetComponentInChildren<Light>().enabled = true;
+                    lightOn = true;
+                }
+                    
                 break;
         }
         
