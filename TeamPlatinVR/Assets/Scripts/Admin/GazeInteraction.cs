@@ -129,20 +129,22 @@ public class GazeInteraction : MonoBehaviour
                         break;
                 }
                 break;
-            case "Clock_Gear02":
+            case "Clock_Gear01":
                 clock_hand_long.transform.Rotate(rotation, Space.Self);
+                Debug.Log("Gear01 Rotation.z: " + clock_hand_long.transform.eulerAngles.z);
                 GetComponent<AudioSource>().Play();
-                if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
+                if(clock_hand_long.transform.eulerAngles.z >= 80 && clock_hand_long.transform.eulerAngles.z <= 90 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
                     puzzleSolved = true;
                     CheckPuzzleStatus();
                 }
                 break;
-            case "Clock_Gear01":
+            case "Clock_Gear02":
                 clock_hand_short.transform.Rotate(rotation, Space.Self);
+                Debug.Log("Gear02 Rotation.z: " + clock_hand_short.transform.eulerAngles.z);
                 GetComponent<AudioSource>().Play();
-                if(clock_hand_long.transform.eulerAngles.z >= 90 && clock_hand_long.transform.eulerAngles.z <= 95 &&
+                if(clock_hand_long.transform.eulerAngles.z >= 80 && clock_hand_long.transform.eulerAngles.z <= 90 &&
                 clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
                 {
                     puzzleSolved = true;
@@ -151,6 +153,9 @@ public class GazeInteraction : MonoBehaviour
                 break;
             case "Portrait":
                 //
+                break;
+            case "Lamp":
+                Debug.Log("Lampe angeguckt!");
                 break;
         }
         

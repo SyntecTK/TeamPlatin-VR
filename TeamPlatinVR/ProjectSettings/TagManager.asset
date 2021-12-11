@@ -10,6 +10,7 @@ TagManager:
   - Portrait
   - Clock_Gear01
   - Clock_Gear02
+  - Lamp
   layers:
   - Default
   - TransparentFX
