@@ -16,7 +16,7 @@ public class XRCardboardController : MonoBehaviour
 
     public UnityEvent OnTriggerPressed = new UnityEvent();
     
-    private Camera camera;
+    private Camera cam;
     private GameObject _gazedAtObject = null;
     [SerializeField] private float MAX_DISTANCE = 100;
 
@@ -40,8 +40,8 @@ public class XRCardboardController : MonoBehaviour
 
     private void Start()
     {
-        if (camera == null)
-            camera = Camera.main;
+        if (cam == null)
+            cam = Camera.main;
 
         SetupCardboard();
 

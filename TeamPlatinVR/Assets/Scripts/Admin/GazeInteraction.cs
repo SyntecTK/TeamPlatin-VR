@@ -28,7 +28,7 @@ public class GazeInteraction : MonoBehaviour
     private Quaternion chs_startRot;
 
     //Teddy
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     //Radio
     private GameObject pointer;
@@ -47,7 +47,7 @@ public class GazeInteraction : MonoBehaviour
     {
         baseColor = GetComponent<Renderer>().material.color;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         radio = GetComponentInParent<AudioSource>();
         
         pointer = GameObject.Find("Pointer");
@@ -87,7 +87,7 @@ public class GazeInteraction : MonoBehaviour
         switch(this.tag)
         {
             case "Teddy":
-                rigidbody.AddForce(transform.forward * pushStrength * -1);
+                rb.AddForce(transform.forward * pushStrength * -1);
                 break;
             case "MovePoint":
                 gameManager.MovePlayer(this.transform.position);

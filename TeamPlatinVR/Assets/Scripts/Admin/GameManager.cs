@@ -12,19 +12,18 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.Find("XR Rig");
         playerPos = player.transform.position;
-        playerPos.y = -1;
+        player.transform.position = new Vector3(playerPos.x, playerPos.y - 1, playerPos.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerPos.y > 0f)
-            playerPos.y = -1;
+
     }
 
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = new Vector3(location.x, location.y, location.z);
+        player.transform.position = new Vector3(location.x, location.y - 1, location.z);
         playerPos = player.transform.position;
     }
 }
