@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4545365501366117274
+--- !u!1 &8516854322480224954
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,13 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3773930157980416288}
-  - component: {fileID: 283844349366728325}
-  - component: {fileID: 2599876227188752975}
-  - component: {fileID: 4545365501366117269}
-  - component: {fileID: 4545365501366117268}
-  - component: {fileID: 4545365501366117275}
-  - component: {fileID: 4545365501366117270}
+  - component: {fileID: 9041575817932390400}
+  - component: {fileID: 5392491934794141605}
+  - component: {fileID: 7868084944600349551}
+  - component: {fileID: 8516854322480224949}
+  - component: {fileID: 8516854322480224948}
+  - component: {fileID: 8516854322480224955}
+  - component: {fileID: 8516854322480224950}
   m_Layer: 6
   m_Name: Teddy
   m_TagString: Teddy
@@ -22,35 +22,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3773930157980416288
+--- !u!4 &9041575817932390400
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_LocalRotation: {x: 4.7747954e-18, y: -0.7450202, z: -4.7747954e-18, w: 0.6670419}
-  m_LocalPosition: {x: 1.6312914, y: -0.99, z: 2.5921354}
+  m_LocalPosition: {x: 3.5372915, y: -0.973, z: 1.9661354}
   m_LocalScale: {x: 0.095130496, y: 0.13646233, z: 0.056363553}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &283844349366728325
+--- !u!33 &5392491934794141605
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_Mesh: {fileID: -3909965298185252484, guid: 8a6224b5a4fe3d7408b6573c47cd1d20, type: 3}
---- !u!23 &2599876227188752975
+--- !u!23 &7868084944600349551
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4545365501366117269
+--- !u!64 &8516854322480224949
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -99,27 +99,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3909965298185252484, guid: 8a6224b5a4fe3d7408b6573c47cd1d20, type: 3}
---- !u!114 &4545365501366117268
+--- !u!114 &8516854322480224948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acb330521ab84ec4fb4c7a3dcf221dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gazeImage: {fileID: 0}
+  usedButton: {r: 0, g: 0, b: 0, a: 0}
+  portraitMaterial: {fileID: 0}
+  newSkybox: {fileID: 0}
+  winSound: {fileID: 0}
+  moveSound: {fileID: 0}
+  radio01: {fileID: 0}
+  radio02: {fileID: 0}
+  radio03: {fileID: 0}
+  radio04: {fileID: 0}
+  radio05: {fileID: 0}
   duration: 1
---- !u!114 &4545365501366117275
+--- !u!114 &8516854322480224955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28d0b69e9ce275e479fac5d68f2e2fde, type: 3}
@@ -128,7 +138,7 @@ MonoBehaviour:
   onHoverEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4545365501366117268}
+      - m_Target: {fileID: 8516854322480224948}
         m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
         m_MethodName: StartCount
         m_Mode: 1
@@ -142,20 +152,32 @@ MonoBehaviour:
         m_CallState: 2
   onHoverExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8516854322480224948}
+        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+        m_MethodName: ChangeOffGaze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSelectEnter:
     m_PersistentCalls:
       m_Calls: []
   onSelectExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!54 &4545365501366117270
+--- !u!54 &8516854322480224950
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4545365501366117274}
+  m_GameObject: {fileID: 8516854322480224954}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0

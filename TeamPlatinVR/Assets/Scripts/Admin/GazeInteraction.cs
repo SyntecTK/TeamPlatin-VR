@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GazeInteraction : MonoBehaviour
 {
@@ -52,19 +53,22 @@ public class GazeInteraction : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
         radio = GetComponentInParent<AudioSource>();
-        
-        pointer = GameObject.Find("Pointer");
-        pointerStartPos = pointer.transform.position;
 
         lightOn = false;
-
-        clock_hand_long = GameObject.Find("Big_Pointer");
-        chl_startRot = clock_hand_long.transform.rotation;
-        clock_hand_short = GameObject.Find("Small_Pointer");
-        chs_startRot = clock_hand_short.transform.rotation;
+        
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            pointer = GameObject.Find("Pointer");
+            pointerStartPos = pointer.transform.position;
+            clock_hand_long = GameObject.Find("Big_Pointer");
+            chl_startRot = clock_hand_long.transform.rotation;
+            clock_hand_short = GameObject.Find("Small_Pointer");
+            chs_startRot = clock_hand_short.transform.rotation;
+        }
+        
 
         puzzleSolved = false;
-        pushStrength = 100f;
+        pushStrength = 1000f;
     }
 
     // Update is called once per frame
@@ -72,11 +76,10 @@ public class GazeInteraction : MonoBehaviour
     {
         if(gaze==true)
         {
-            if(duration > timer) {
-                {
+            if(duration > timer)
+            {
                     timer += Time.deltaTime;
                     gazeImage.fillAmount = timer / duration;
-                }
             }else{
                 timer = 0;
                 ChangeOnGaze();
