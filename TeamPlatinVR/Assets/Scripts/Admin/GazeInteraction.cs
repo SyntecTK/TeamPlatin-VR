@@ -39,6 +39,12 @@ public class GazeInteraction : MonoBehaviour
     //Lampe
     bool lightOn;
 
+    //Drawers
+    bool drawerBluePushed;
+    bool drawerWhitePushed;
+    bool drawerGreenPushed;
+    Vector3 endPos;
+
     public float duration;
 
     private float pushStrength;
@@ -56,7 +62,7 @@ public class GazeInteraction : MonoBehaviour
 
         lightOn = false;
         
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().name == "Level_0")
         {
             pointer = GameObject.Find("Pointer");
             pointerStartPos = pointer.transform.position;
@@ -69,6 +75,10 @@ public class GazeInteraction : MonoBehaviour
 
         puzzleSolved = false;
         pushStrength = 1000f;
+
+        drawerBluePushed = false;
+        drawerGreenPushed = false;
+        drawerWhitePushed = false;
     }
 
     // Update is called once per frame
@@ -94,6 +104,7 @@ public class GazeInteraction : MonoBehaviour
         Vector3 rotation = new Vector3(0, 0, 60.0f);
         switch(this.tag)
         {
+            //Level_0 Objects------------------------------------------------
             case "Teddy":
                 rb.AddForce(transform.forward * pushStrength * -1);
                 break;
@@ -172,12 +183,55 @@ public class GazeInteraction : MonoBehaviour
                 {
                     GetComponentInChildren<Light>().enabled = true;
                     lightOn = true;
-                }
-                    
+                } 
                 break;
+                
+            //Level_1 Objects----------------------------------------------------------------
+            case "Drawer":
+                Vector3 startPos = transform.position;
+                switch(this.name)
+                {
+                    case "DrawerBlue":
+                        if(!drawerBluePushed)
+                        {
+                            MoveDrawer(startPos, new Vector3(0, 0, -2), 0.5f);
+                            drawerBluePushed = true;
+                        }else{
+                            MoveDrawer(startPos, new Vector3(0, 0, 2), 0.5f);
+                            drawerBluePushed = false;
+                        }
+                    break;
+                    case "DrawerGreen":
+                        if(!drawerGreenPushed)
+                        {
+                            MoveDrawer(startPos, new Vector3(0, 0, 2), 0.4f);
+                            drawerGreenPushed = true;
+                        }else{
+                            MoveDrawer(startPos, new Vector3(0, 0, -2), 0.4f);
+                            drawerGreenPushed = false;
+                        }
+                        break;
+                    case "DrawerWhite":
+                        if(!drawerWhitePushed)
+                        {
+                            MoveDrawer(startPos, new Vector3(-1, 0, 0), 0.4f);
+                            drawerWhitePushed = true;
+                        }else{
+                            MoveDrawer(startPos, new Vector3(1, 0, 0), 0.4f);
+                            drawerWhitePushed = false;
+                        }
+                        break;
+                }
+            break;
         }
         
 
+    }
+
+    private void MoveDrawer(Vector3 startPos, Vector3 offSet, float distance)
+    {
+        Vector3 endPos = new Vector3(startPos.x + offSet.x, startPos.y + offSet.y, startPos.z + offSet.z);
+        transform.position = Vector3.MoveTowards(startPos, endPos, distance);
     }
 
     public void ChangeOffGaze()

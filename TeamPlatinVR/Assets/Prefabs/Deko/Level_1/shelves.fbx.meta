@@ -3,7 +3,12 @@ guid: 0ecb37cc98a085e4da7569c9d2aba86b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HolzDiffuse
+    second: {fileID: 2800000, guid: 93e9b3dbd0d9cb34a8f9abb35f45926f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
