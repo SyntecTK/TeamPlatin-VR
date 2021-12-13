@@ -44,8 +44,10 @@ public class GazeInteraction : MonoBehaviour
     bool drawerWhitePushed;
     bool drawerGreenPushed;
     Vector3 endPos;
-
     public float duration;
+
+    //JackBox
+    Vector3 rotation = new Vector3(0, 0, 60.0f);
 
     private float pushStrength;
     private bool gaze;
@@ -61,7 +63,8 @@ public class GazeInteraction : MonoBehaviour
         radio = GetComponentInParent<AudioSource>();
 
         lightOn = false;
-        
+
+        //Wenn man im ersten Level ist werden diese Objekte gesucht und variablen gesetzt
         if(SceneManager.GetActiveScene().name == "Level_0")
         {
             pointer = GameObject.Find("Pointer");
@@ -194,20 +197,20 @@ public class GazeInteraction : MonoBehaviour
                     case "DrawerBlue":
                         if(!drawerBluePushed)
                         {
-                            MoveDrawer(startPos, new Vector3(0, 0, -2), 0.5f);
+                            MoveDrawer(startPos, new Vector3(0, 0, -1), 0.5f);
                             drawerBluePushed = true;
                         }else{
-                            MoveDrawer(startPos, new Vector3(0, 0, 2), 0.5f);
+                            MoveDrawer(startPos, new Vector3(0, 0, 1), 0.5f);
                             drawerBluePushed = false;
                         }
                     break;
                     case "DrawerGreen":
                         if(!drawerGreenPushed)
                         {
-                            MoveDrawer(startPos, new Vector3(0, 0, 2), 0.4f);
+                            MoveDrawer(startPos, new Vector3(0, 0, 1), 0.4f);
                             drawerGreenPushed = true;
                         }else{
-                            MoveDrawer(startPos, new Vector3(0, 0, -2), 0.4f);
+                            MoveDrawer(startPos, new Vector3(0, 0, -1), 0.4f);
                             drawerGreenPushed = false;
                         }
                         break;
@@ -224,14 +227,26 @@ public class GazeInteraction : MonoBehaviour
                 }
             break;
         }
-        
-
     }
 
     private void MoveDrawer(Vector3 startPos, Vector3 offSet, float distance)
     {
         Vector3 endPos = new Vector3(startPos.x + offSet.x, startPos.y + offSet.y, startPos.z + offSet.z);
         transform.position = Vector3.MoveTowards(startPos, endPos, distance);
+    }
+
+    private void RotateObject()
+    {
+        Vector3 rotation = new Vector3(5, 0, 0);
+        GameObject jackBox = GameObject.Find("jackbox-handle");
+
+        
+        //Debug.Log("jackBoxhandle Rotation.z: " + jackBox.transform.eulerAngles.z);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jackBox.transform.Rotate(rotation * Time.deltaTime, Space.Self);
+            Debug.Log("Rotated");
+        }
     }
 
     public void ChangeOffGaze()
