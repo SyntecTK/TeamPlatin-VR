@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
 
     private GameObject gazeObject;
 
+    private Rigidbody rbBlock;
+
+    //JackBox
+    bool rotating;
+
     //Interactables
     public GameObject jackBox;
         private Transform jbHandle;
@@ -21,8 +26,12 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("XR Rig");
         playerPos = player.transform.position;
     
-        jbRotation = new Vector3(40, 0, 0);
+        jbRotation = new Vector3(100, 0, 0);
         gazeObject = null;
+
+        rotating = false;
+
+        rbBlock = GameObject.Find("Block_O").GetComponent<Rigidbody>();
 
     }
 
@@ -35,7 +44,8 @@ public class GameManager : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log("Current Object: " + gazeObject.name);
+            //Debug.Log("Current Object: " + gazeObject.name);
+            rbBlock.AddForce(Vector3.back * 200);
         }
     }
 
@@ -50,14 +60,14 @@ public class GameManager : MonoBehaviour
         playerPos = player.transform.position;
     }
 
-    private void ManageJackBox()
+    public void ManageJackBox()
     {
         Debug.Log("Gaze Object Name: " + gameObject.name);
         if(gazeObject.name == "jackBox")
         {
             jbHandle =  gazeObject.transform.GetChild(1);
-            Debug.Log("Got Child: " + jbHandle.name);
-            jbHandle.Rotate(jbRotation * Time.deltaTime, Space.Self);
+            if(rotating)
+                jbHandle.Rotate(jbRotation * Time.deltaTime, Space.Self);
         }
     }
 
@@ -65,5 +75,12 @@ public class GameManager : MonoBehaviour
     {
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
         
+    }
+    
+    IEnumerator RotationTime(int delay)
+    {
+        rotating = true;
+        yield return new WaitForSeconds(delay);
+        rotating = false;
     }
 }

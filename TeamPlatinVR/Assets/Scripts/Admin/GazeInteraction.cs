@@ -221,6 +221,8 @@ public class GazeInteraction : MonoBehaviour
                         }
                         break;
                     case "DrawerWhite":
+                        //GameObject teddy2 = GameObject.Find("Teddy_Drawer");
+                        //teddy2.SetActive(true);
                         if(!drawerWhitePushed)
                         {
                             MoveDrawer(startPos, new Vector3(-1, 0, 0), 0.4f);
@@ -233,8 +235,14 @@ public class GazeInteraction : MonoBehaviour
                 }
             break;
             case "JackBox":
-                gM.SetGazedObject(gameObject);
+                //gM.SetGazedObject(gameObject);
+                //gM.RotateObject(gameObject, new Vector3(150, 0, 0));
+                Transform jbHandle = gameObject.transform.GetChild(1);
+                jbHandle.rotation = Quaternion.Euler(new Vector3(jbHandle.eulerAngles.x + 10, 0, 0));
                 Debug.Log("Set Gazed to: " + gameObject.name);
+                break;
+            case "Block_H":
+                //interaction
                 break;
         }
     }
