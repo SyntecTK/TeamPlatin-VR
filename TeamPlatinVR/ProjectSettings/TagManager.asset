@@ -12,6 +12,7 @@ TagManager:
   - Clock_Gear02
   - Lamp
   - Drawer
+  - JackBox
   layers:
   - Default
   - TransparentFX

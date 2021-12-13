@@ -54,6 +54,8 @@ public class GazeInteraction : MonoBehaviour
     private float timer;
     private bool puzzleSolved;
 
+    private GameManager gM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,9 @@ public class GazeInteraction : MonoBehaviour
         drawerBluePushed = false;
         drawerGreenPushed = false;
         drawerWhitePushed = false;
+
+
+        gM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -105,6 +110,7 @@ public class GazeInteraction : MonoBehaviour
     public void ChangeOnGaze()
     {
         Vector3 rotation = new Vector3(0, 0, 60.0f);
+        //TO-DO change to this.name
         switch(this.tag)
         {
             //Level_0 Objects------------------------------------------------
@@ -226,6 +232,10 @@ public class GazeInteraction : MonoBehaviour
                         break;
                 }
             break;
+            case "JackBox":
+                gM.SetGazedObject(gameObject);
+                Debug.Log("Set Gazed to: " + gameObject.name);
+                break;
         }
     }
 
@@ -255,6 +265,7 @@ public class GazeInteraction : MonoBehaviour
         {
             gaze = false;
             gazeImage.fillAmount = 0;
+            gM.SetGazedObject(null);
         }
     }
 

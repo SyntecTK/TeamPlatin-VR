@@ -20,21 +20,26 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.Find("XR Rig");
         playerPos = player.transform.position;
-        
-        jbHandle =  jackBox.transform.GetChild(1);
-        Debug.Log("Found Child!" + jbHandle.name);
-        jbRotation = new Vector3(10, 0, 0);
+    
+        jbRotation = new Vector3(40, 0, 0);
+        gazeObject = null;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        jbHandle.Rotate(jbRotation * Time.deltaTime, Space.Self);
-        Debug.Log("Rotation: " + jbHandle.eulerAngles);
+        if(gazeObject != null)
+        {
+            ManageJackBox();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Current Object: " + gazeObject.name);
+        }
     }
 
-    private void SetGazedObject(GameObject obj)
+    public void SetGazedObject(GameObject obj)
     {
         gazeObject = obj;
     }
@@ -47,14 +52,18 @@ public class GameManager : MonoBehaviour
 
     private void ManageJackBox()
     {
-        if(gazeObject.name == "jackBox_Handle")
+        Debug.Log("Gaze Object Name: " + gameObject.name);
+        if(gazeObject.name == "jackBox")
         {
-
+            jbHandle =  gazeObject.transform.GetChild(1);
+            Debug.Log("Got Child: " + jbHandle.name);
+            jbHandle.Rotate(jbRotation * Time.deltaTime, Space.Self);
         }
     }
 
     public void RotateObject(GameObject rotationObject, Vector3 rotation)
     {
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
+        
     }
 }
