@@ -15,6 +15,14 @@ TagManager:
   - JackBox
   - SpielzeugBall
   - BlockTeddy
+  - Block_H
+  - Podest_O
+  - Podest_H
+  - Block_O
+  - Podest_A
+  - Podest_N
+  - Block_N
+  - Block_A
   layers:
   - Default
   - TransparentFX

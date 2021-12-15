@@ -64,7 +64,8 @@ public class GazeInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        baseColor = GetComponent<Renderer>().material.color;
+        //Fix Renderer to only search on Buttons
+        //baseColor = GetComponent<Renderer>().material.color;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody>();
         radio = GetComponentInParent<AudioSource>();
@@ -192,11 +193,13 @@ public class GazeInteraction : MonoBehaviour
                 if(lightOn)
                 {
                     GetComponentInChildren<Light>().enabled = false;
+                    GetComponent<AudioSource>().Play();
                     lightOn = false;
                 }
                 else if(!lightOn)
                 {
                     GetComponentInChildren<Light>().enabled = true;
+                    GetComponent<AudioSource>().Play();
                     lightOn = true;
                 } 
                 break;
@@ -210,6 +213,7 @@ public class GazeInteraction : MonoBehaviour
                         if(!drawerBluePushed)
                         {
                             MoveDrawer(startPos, new Vector3(0, 0, -1), 0.5f);
+                            GetComponent<AudioSource>().Play();
                             drawerBluePushed = true;
                         }else{
                             MoveDrawer(startPos, new Vector3(0, 0, 1), 0.5f);
@@ -220,6 +224,7 @@ public class GazeInteraction : MonoBehaviour
                         if(!drawerGreenPushed)
                         {
                             MoveDrawer(startPos, new Vector3(0, 0, 1), 0.4f);
+                            GetComponent<AudioSource>().Play();
                             drawerGreenPushed = true;
                         }else{
                             MoveDrawer(startPos, new Vector3(0, 0, -1), 0.4f);
@@ -229,10 +234,10 @@ public class GazeInteraction : MonoBehaviour
                     case "DrawerWhite":
                         if(!drawerWhitePushed && gM.teddyCollected)
                         {
-                            Debug.Log("Teddy placed");
                             GameObject ted = GameObject.Find("BlockTeddy02");
                             ted.GetComponent<MeshRenderer>().enabled = true;
                             MoveDrawer(startPos, new Vector3(-1, 0, 0), 0.4f);
+                            GetComponent<AudioSource>().Play();
                             drawerWhitePushed = true;
                         }else if (drawerWhitePushed){
                             MoveDrawer(startPos, new Vector3(1, 0, 0), 0.4f);
@@ -242,16 +247,64 @@ public class GazeInteraction : MonoBehaviour
                 }
             break;
             case "Block_N":
-                //interaction
+                gM.pickUpBlock_N = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
                 break;
             case "Block_O":
-                //interaction
+                gM.pickUpBlock_O = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
                 break;
             case "Block_A":
-                //interaction
+                gM.pickUpBlock_A = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
                 break;
             case "Block_H":
-                //interaction
+                gM.pickUpBlock_H = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                break;
+            case "Podest_N":
+                if(gM.pickUpBlock_N)
+                {
+                    GameObject block = transform.GetChild(0).gameObject;
+                    GetComponent<AudioSource>().Play();
+                    block.SetActive(true);
+                    gameObject.layer = 0;
+                    gM.placedBlock_N = true;
+                    gM.CheckBlockPuzzle();
+                }
+                break;
+            case "Podest_O":
+                if(gM.pickUpBlock_O)
+                {
+                    GameObject block = transform.GetChild(0).gameObject;
+                    GetComponent<AudioSource>().Play();
+                    block.SetActive(true);
+                    gameObject.layer = 0;
+                    gM.placedBlock_O = true;
+                    gM.CheckBlockPuzzle();
+                }
+                break;
+            case "Podest_A":
+                if(gM.pickUpBlock_A)
+                {
+                    GameObject block = transform.GetChild(0).gameObject;
+                    GetComponent<AudioSource>().Play();
+                    block.SetActive(true);
+                    gameObject.layer = 0;
+                    gM.placedBlock_A = true;
+                    gM.CheckBlockPuzzle();
+                }
+                break;
+            case "Podest_H":
+                if(gM.pickUpBlock_H)
+                {
+                    GameObject block = transform.GetChild(0).gameObject;
+                    GetComponent<AudioSource>().Play();
+                    block.SetActive(true);
+                    gameObject.layer = 0;
+                    gM.placedBlock_H = true;
+                    gM.CheckBlockPuzzle();
+                }
                 break;
             case "SpielzeugBall":
                 Rigidbody rb=gameObject.GetComponent<Rigidbody>();
@@ -262,29 +315,37 @@ public class GazeInteraction : MonoBehaviour
                 Debug.Log("Teddy collected");
                 Debug.Log("Teddy Collected: " + teddyCollected);
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
+                GetComponent<AudioSource>().Play();
                 break;
             case "JackBox":
                 Transform jbHandle = gameObject.transform.GetChild(1);
-                StartCoroutine(SpinHandle(jbHandle));
                 Transform jbTop = gameObject.transform.GetChild(2);
+                StartCoroutine(SpinHandle(jbHandle, jbTop, gM.spins));
+                GetComponent<AudioSource>().Play();
                 gM.spins++;
-                if(gM.spins == 3)
+                if(gM.spins >= 3)
                 {
-                    jbTop.Rotate(0, 0, 75);
-                    Debug.Log("Jackbox open");
+                    gameObject.layer = 0;  
                 }
                 break;
         }
     }
 
-    IEnumerator SpinHandle(Transform handle)
+    IEnumerator SpinHandle(Transform handle, Transform top, int spins)
     {
         gM.rotating = true;
-        Debug.Log("Spinning");
-        yield return new WaitForSeconds(2);
+        gameObject.layer = 1;
+        yield return new WaitForSeconds(4);
         gM.rotating = false;
-        Debug.Log("Stopped Spinning");
-
+        gameObject.layer = 6;
+        if(spins == 2)
+        {
+            top.Rotate(0, 0, 75);
+            GameObject blockN = transform.GetChild(3).gameObject;
+            blockN.GetComponent<MeshRenderer>().enabled = true;
+            blockN.GetComponent<BoxCollider>().enabled = true;
+        }
+            
     }
 
     private void MoveDrawer(Vector3 startPos, Vector3 offSet, float distance)
@@ -355,6 +416,11 @@ public class GazeInteraction : MonoBehaviour
             Rigidbody rbBlock = blockO.GetComponent<Rigidbody>();
             blockO.layer = 6;
             rbBlock.AddForce(Vector3.back * 200);
+            GetComponent<AudioSource>().Play();
+
+            //Spielt gleichzeitig mit ^
+            //Überspielt den anderen Sound und ist maybe zu lang
+            //blockO.GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -17,10 +17,24 @@ public class GameManager : MonoBehaviour
     public bool rotating;
     public int spins = 0;
 
+    //Block Interactions
+    public bool pickUpBlock_N;
+    public bool pickUpBlock_O;
+    public bool pickUpBlock_A;
+    public bool pickUpBlock_H;
+
+    public bool placedBlock_N;
+    public bool placedBlock_O;
+    public bool placedBlock_A;
+    public bool placedBlock_H;
+
     //Interactables
     public GameObject jackBox;
         private Transform jbHandle;
         private Vector3 jbRotation;
+
+    //Chest
+    private Transform chestTop;
 
 
     private Vector3 playerPos;
@@ -36,6 +50,8 @@ public class GameManager : MonoBehaviour
         rotating = false;
 
         rbBlock = GameObject.Find("Block_O").GetComponent<Rigidbody>();
+
+        chestTop = GameObject.Find("Chest_Top").GetComponent<Transform>();
 
     }
 
@@ -55,9 +71,16 @@ public class GameManager : MonoBehaviour
         if(rotating)
         {
             Transform handle = GameObject.Find("jackbox-handle").GetComponent<Transform>();
-            //handle.rotation = Quaternion.Euler(new Vector3(handle.eulerAngles.x * Time.deltaTime, 0, 0));
             handle.Rotate(0.2f, 0, 0, Space.Self);
+        }
+    }
 
+    public void CheckBlockPuzzle()
+    {
+        if(placedBlock_N && placedBlock_O && placedBlock_A && placedBlock_H)
+        {
+            chestTop.Rotate(new Vector3(0, 0, 50));
+            chestTop.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -68,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = new Vector3(location.x, location.y - 1, location.z);
+        player.transform.position = new Vector3(location.x, location.y /*- 1*/, location.z);
         playerPos = player.transform.position;
     }
 
