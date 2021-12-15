@@ -13,6 +13,8 @@ TagManager:
   - Lamp
   - Drawer
   - JackBox
+  - SpielzeugBall
+  - BlockTeddy
   layers:
   - Default
   - TransparentFX

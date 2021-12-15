@@ -49,6 +49,11 @@ public class GazeInteraction : MonoBehaviour
     //JackBox
     Vector3 rotation = new Vector3(0, 0, 60.0f);
 
+    //Puzzle
+    bool teddyCollected;
+    bool isRotating;
+
+
     private float pushStrength;
     private bool gaze;
     private float timer;
@@ -115,7 +120,8 @@ public class GazeInteraction : MonoBehaviour
         {
             //Level_0 Objects------------------------------------------------
             case "Teddy":
-                rb.AddForce(transform.forward * pushStrength * -1);
+                Rigidbody rbTeddy = gameObject.GetComponent<Rigidbody>();
+                rbTeddy.AddForce(transform.forward * pushStrength * -1);
                 break;
             case "MovePoint":
                 gameManager.MovePlayer(this.transform.position);
@@ -221,30 +227,60 @@ public class GazeInteraction : MonoBehaviour
                         }
                         break;
                     case "DrawerWhite":
-                        //GameObject teddy2 = GameObject.Find("Teddy_Drawer");
-                        //teddy2.SetActive(true);
-                        if(!drawerWhitePushed)
+                        if(!drawerWhitePushed && gM.teddyCollected)
                         {
+                            Debug.Log("Teddy placed");
+                            GameObject ted = GameObject.Find("BlockTeddy02");
+                            ted.GetComponent<MeshRenderer>().enabled = true;
                             MoveDrawer(startPos, new Vector3(-1, 0, 0), 0.4f);
                             drawerWhitePushed = true;
-                        }else{
+                        }else if (drawerWhitePushed){
                             MoveDrawer(startPos, new Vector3(1, 0, 0), 0.4f);
                             drawerWhitePushed = false;
                         }
                         break;
                 }
             break;
-            case "JackBox":
-                //gM.SetGazedObject(gameObject);
-                //gM.RotateObject(gameObject, new Vector3(150, 0, 0));
-                Transform jbHandle = gameObject.transform.GetChild(1);
-                jbHandle.rotation = Quaternion.Euler(new Vector3(jbHandle.eulerAngles.x + 10, 0, 0));
-                Debug.Log("Set Gazed to: " + gameObject.name);
+            case "Block_N":
+                //interaction
+                break;
+            case "Block_O":
+                //interaction
+                break;
+            case "Block_A":
+                //interaction
                 break;
             case "Block_H":
                 //interaction
                 break;
+            case "SpielzeugBall":
+                Rigidbody rb=gameObject.GetComponent<Rigidbody>();
+                rb.AddForce(Vector3.forward * 500);
+                break;
+            case "BlockTeddy":
+                gM.teddyCollected = true;
+                Debug.Log("Teddy collected");
+                Debug.Log("Teddy Collected: " + teddyCollected);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                break;
+            case "JackBox":
+                Transform jbHandle = gameObject.transform.GetChild(1);
+                StartCoroutine(SpinHandle(jbHandle));
+                while(gM.rotating)
+                {
+                    jbHandle.rotation = Quaternion.Euler(new Vector3(jbHandle.eulerAngles.x  * 200 * Time.deltaTime, 0, 0));
+                } 
+                //Debug.Log("Set Gazed to: " + gameObject.name);
+                break;
         }
+    }
+
+    IEnumerator SpinHandle(Transform handle)
+    {
+        gM.rotating = true;
+        yield return new WaitForSeconds(2);
+        gM.rotating = false;
+
     }
 
     private void MoveDrawer(Vector3 startPos, Vector3 offSet, float distance)
@@ -304,6 +340,17 @@ public class GazeInteraction : MonoBehaviour
             clockSounds.Play();
 
             RenderSettings.skybox = newSkybox;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if(this.gameObject.name == "SpielzeugBall" && other.gameObject.name == "DrawerBlue")
+        {
+            Debug.Log("Collided with Shelf");
+            GameObject blockO = GameObject.Find("Block_O");
+            Rigidbody rbBlock = blockO.GetComponent<Rigidbody>();
+            blockO.layer = 6;
+            rbBlock.AddForce(Vector3.back * 200);
         }
     }
 }

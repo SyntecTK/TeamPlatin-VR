@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
 
     private Rigidbody rbBlock;
 
+    [HideInInspector]
+    public bool teddyCollected;
+
     //JackBox
-    bool rotating;
+    public bool rotating;
 
     //Interactables
     public GameObject jackBox;
