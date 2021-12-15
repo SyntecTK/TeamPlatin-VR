@@ -266,11 +266,13 @@ public class GazeInteraction : MonoBehaviour
             case "JackBox":
                 Transform jbHandle = gameObject.transform.GetChild(1);
                 StartCoroutine(SpinHandle(jbHandle));
-                while(gM.rotating)
+                Transform jbTop = gameObject.transform.GetChild(2);
+                gM.spins++;
+                if(gM.spins == 3)
                 {
-                    jbHandle.rotation = Quaternion.Euler(new Vector3(jbHandle.eulerAngles.x  * 200 * Time.deltaTime, 0, 0));
-                } 
-                //Debug.Log("Set Gazed to: " + gameObject.name);
+                    jbTop.Rotate(0, 0, 75);
+                    Debug.Log("Jackbox open");
+                }
                 break;
         }
     }
@@ -278,8 +280,10 @@ public class GazeInteraction : MonoBehaviour
     IEnumerator SpinHandle(Transform handle)
     {
         gM.rotating = true;
+        Debug.Log("Spinning");
         yield return new WaitForSeconds(2);
         gM.rotating = false;
+        Debug.Log("Stopped Spinning");
 
     }
 

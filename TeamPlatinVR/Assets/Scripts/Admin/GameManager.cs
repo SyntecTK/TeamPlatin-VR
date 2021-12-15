@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     //JackBox
     public bool rotating;
+    public int spins = 0;
 
     //Interactables
     public GameObject jackBox;
@@ -49,6 +50,14 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Current Object: " + gazeObject.name);
             rbBlock.AddForce(Vector3.back * 200);
+        }
+
+        if(rotating)
+        {
+            Transform handle = GameObject.Find("jackbox-handle").GetComponent<Transform>();
+            //handle.rotation = Quaternion.Euler(new Vector3(handle.eulerAngles.x * Time.deltaTime, 0, 0));
+            handle.Rotate(0.2f, 0, 0, Space.Self);
+
         }
     }
 
