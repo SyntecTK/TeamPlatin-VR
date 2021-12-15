@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.Find("XR Rig");
         playerPos = player.transform.position;
+
+        playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
     
         jbRotation = new Vector3(100, 0, 0);
         gazeObject = null;
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
         {
             chestTop.Rotate(new Vector3(0, 0, 50));
             chestTop.GetComponent<AudioSource>().Play();
+            GameObject.Find("Portrait_Bild").GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = new Vector3(location.x, location.y /*- 1*/, location.z);
+        player.transform.position = new Vector3(location.x, location.y -1, location.z);
         playerPos = player.transform.position;
     }
 
