@@ -248,19 +248,19 @@ public class GazeInteraction : MonoBehaviour
             break;
             case "Block_N":
                 gM.pickUpBlock_N = true;
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.SetActive(false);
                 break;
             case "Block_O":
                 gM.pickUpBlock_O = true;
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.SetActive(false);
                 break;
             case "Block_A":
                 gM.pickUpBlock_A = true;
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.SetActive(false);
                 break;
             case "Block_H":
                 gM.pickUpBlock_H = true;
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.SetActive(false);
                 break;
             case "Podest_N":
                 if(gM.pickUpBlock_N)
@@ -312,9 +312,7 @@ public class GazeInteraction : MonoBehaviour
                 break;
             case "BlockTeddy":
                 gM.teddyCollected = true;
-                Debug.Log("Teddy collected");
-                Debug.Log("Teddy Collected: " + teddyCollected);
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.SetActive(false);
                 GetComponent<AudioSource>().Play();
                 break;
             case "JackBox":
