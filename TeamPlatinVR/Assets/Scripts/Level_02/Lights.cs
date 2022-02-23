@@ -6,7 +6,7 @@ public class Lights : GazeManager
 {
     public int winNumber;
 
-    private Light light;
+    private Light spotLight;
     private Material glassMat;
 
     private Color winColor;
@@ -28,7 +28,7 @@ public class Lights : GazeManager
     {
         base.Start();
         glassMat = transform.GetChild(0).gameObject.GetComponent<Renderer>().material;
-        light = transform.GetChild(1).gameObject.GetComponent<Light>();
+        spotLight = transform.GetChild(1).gameObject.GetComponent<Light>();
 
         winColor = glassMat.GetColor("_EmissionColor");
         
@@ -74,7 +74,7 @@ public class Lights : GazeManager
 
     private void SwitchLightColor(Color color)
     {
-        light.color = color;
+        spotLight.color = color;
         glassMat.SetColor("_EmissionColor", color / 56f);
     }
 
