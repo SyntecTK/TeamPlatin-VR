@@ -7,20 +7,20 @@ public class BallBreakSound : MonoBehaviour
     public Transform keyLocation;
     public GameObject key;
 
-    private AudioSource audio;
+    private AudioSource breakSound;
     private int collidedObjects;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        breakSound = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if(collidedObjects == 0)
         {
-            audio.Play();
-            Instantiate(key, keyLocation.position, keyLocation.rotation);
+            breakSound.Play();
+            Instantiate(key, keyLocation.position, key.transform.rotation);
         }
         collidedObjects++;
     }

@@ -122,6 +122,11 @@ public class GameManager : MonoBehaviour
     {
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
     }
+
+    public void ObjectFloatAnimation(GameObject obj)
+    {
+         
+    }
     
     IEnumerator RotationTime(int delay)
     {
