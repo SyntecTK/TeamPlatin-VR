@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class GameManager : MonoBehaviour
     //Chest
     private Transform chestTop;
 
+    //Spotlight List
+    private bool[] spotlightArray = new bool[4];
+
+    public bool destroyDiscoball;
+
 
     private Vector3 playerPos;
     // Start is called before the first frame update
@@ -51,9 +57,12 @@ public class GameManager : MonoBehaviour
 
         rotating = false;
 
-        rbBlock = GameObject.Find("Block_O").GetComponent<Rigidbody>();
-
-        chestTop = GameObject.Find("Chest_Top").GetComponent<Transform>();
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            rbBlock = GameObject.Find("Block_O").GetComponent<Rigidbody>();
+            chestTop = GameObject.Find("Chest_Top").GetComponent<Transform>();
+        }
+        
 
     }
 
@@ -112,7 +121,6 @@ public class GameManager : MonoBehaviour
     public void RotateObject(GameObject rotationObject, Vector3 rotation)
     {
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
-        
     }
     
     IEnumerator RotationTime(int delay)
@@ -120,5 +128,27 @@ public class GameManager : MonoBehaviour
         rotating = true;
         yield return new WaitForSeconds(delay);
         rotating = false;
+    }
+
+    public void SpotlightChecked(int spotlightIndex)
+    {
+        spotlightArray[spotlightIndex] = !spotlightArray[spotlightIndex];
+    }
+
+    public bool DiscoPuzzleWon()
+    {
+        for(int i = 0; i < spotlightArray.Length; i++)
+        {
+            if(spotlightArray[i] == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void DestroyDiscoBall()
+    {
+        destroyDiscoball = true;
     }
 }

@@ -343,7 +343,6 @@ public class GazeInteraction : MonoBehaviour
             blockN.GetComponent<MeshRenderer>().enabled = true;
             blockN.GetComponent<BoxCollider>().enabled = true;
         }
-            
     }
 
     private void MoveDrawer(Vector3 startPos, Vector3 offSet, float distance)
