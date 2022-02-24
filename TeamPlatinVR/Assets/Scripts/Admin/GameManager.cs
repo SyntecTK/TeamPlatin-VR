@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     public bool destroyDiscoball;
 
+    private bool keyCollected;
+
 
     private Vector3 playerPos;
     // Start is called before the first frame update
@@ -155,5 +157,10 @@ public class GameManager : MonoBehaviour
     public void DestroyDiscoBall()
     {
         destroyDiscoball = true;
+    }
+
+    public void KeyCollected()
+    {
+        keyCollected = true;
     }
 }
