@@ -27,7 +27,7 @@ public class KeyBehaviour : GazeManager
         GameObject.Find("Portrait_Bild").GetComponent<MeshRenderer>().enabled = true;
         gM.KeyCollected();
         winSound.Play();
-        Destroy(gameObject);
+        StartCoroutine(DestroyObjectAfterDelay(3));
     }
 
     private void FloatAnimation()
@@ -40,6 +40,14 @@ public class KeyBehaviour : GazeManager
         float newY = sinYPos + YPos;
         transform.position = new Vector3(pos.x, newY, pos.z);
         transform.Rotate(Time.deltaTime * rotSpeed, 0, 0, Space.Self); 
+    }
+
+    //Damit die Audiosourcde ihren Sound spielen kann, bevor das Objekt zerstört wird
+    IEnumerator DestroyObjectAfterDelay(int delay)
+    {
+        GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 
 }

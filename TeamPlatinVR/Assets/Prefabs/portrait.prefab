@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 6733889607723638513}
   - component: {fileID: 7700116869490987348}
   - component: {fileID: 5564399886063904158}
-  m_Layer: 0
+  - component: {fileID: 3665612879873218538}
+  m_Layer: 6
   m_Name: portrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,3 +165,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3665612879873218538
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212790758559155275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.101781, y: 2.0928679, z: 2.2526486}
+  m_Center: {x: 0.0012497306, y: -0.0074974895, z: 0.009717345}

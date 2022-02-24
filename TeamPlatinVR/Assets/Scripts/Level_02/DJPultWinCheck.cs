@@ -9,6 +9,11 @@ public class DJPultWinCheck : GazeManager
     private Texture wrongTex;
     [SerializeField]
     private Texture rightTex;
+    [SerializeField]
+    private AudioClip loseSound;
+
+    private AudioClip winSound;
+    private AudioSource soundSource;
 
     private Material showMat;
 
@@ -16,6 +21,8 @@ public class DJPultWinCheck : GazeManager
     {
         base.Start();
         showMat = GetComponent<Renderer>().materials[1];
+        soundSource = GetComponent<AudioSource>();
+        winSound = GetComponent<AudioSource>().clip;
     }
 
     public override void ChangeOnGaze()
@@ -24,10 +31,12 @@ public class DJPultWinCheck : GazeManager
         {
             SetTexture(rightTex, Color.green);
             StartCoroutine(EmissionCycle(showMat));
+            PlayCorrectSound();
             gM.DestroyDiscoBall();
         }else{
             SetTexture(wrongTex, Color.red);
             StartCoroutine(EmissionCycle(showMat));
+            PlayCorrectSound();
         }
     }
 
@@ -35,6 +44,18 @@ public class DJPultWinCheck : GazeManager
     {
         showMat.SetTexture("_EmissionMap", tex);
         showMat.SetColor("_EmissionColor", c);
+    }
+
+    private void PlayCorrectSound()
+    {
+        if(gM.DiscoPuzzleWon())
+        {
+            soundSource.clip = winSound;
+            soundSource.Play();
+        }else{
+            soundSource.clip = loseSound;
+            soundSource.Play();
+        }
     }
 
     IEnumerator EmissionCycle(Material mat)
