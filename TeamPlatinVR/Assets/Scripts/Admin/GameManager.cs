@@ -50,9 +50,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("XR Rig");
-        playerPos = player.transform.position;
+        player.transform.position = GameObject.Find("StartingMovePoint").transform.position;
 
+        playerPos = player.transform.position;
         playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
+        
     
         jbRotation = new Vector3(100, 0, 0);
         gazeObject = null;
