@@ -135,7 +135,10 @@ public class XRCardboardController : MonoBehaviour
         else
         {
             // No GameObject detected in front of the camera.
-            _gazedAtObject?.SendMessage("PointerExit");
+            if(_gazedAtObject != null)
+            {
+                _gazedAtObject?.SendMessage("PointerExit");
+            }
             _gazedAtObject = null;
         }
     }
