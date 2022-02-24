@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Lights : GazeManager
 {
-    [SerializeField]
-    private int winNumber;
-
-    private AudioSource soundSource;
-    [SerializeField]
-    private AudioClip buttonRelease;
-    private AudioClip freezeButton;
+    public int winNumber;
 
     private Light spotLight;
     private Material glassMat;
@@ -33,10 +27,6 @@ public class Lights : GazeManager
     public override void Start()
     {
         base.Start();
-
-        soundSource = GetComponent<AudioSource>();
-        freezeButton = soundSource.clip;
-
         glassMat = transform.GetChild(0).gameObject.GetComponent<Renderer>().material;
         spotLight = transform.GetChild(1).gameObject.GetComponent<Light>();
 
@@ -64,8 +54,6 @@ public class Lights : GazeManager
         {
             lightActive = false;
             GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-            soundSource.clip = freezeButton;
-            soundSource.Play();
             if(counter == winNumber)
             {
                 gM.SpotlightChecked(winNumber);
@@ -75,8 +63,6 @@ public class Lights : GazeManager
         {
             lightActive = true;
             GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
-            soundSource.clip = buttonRelease;
-            soundSource.Play();
             if(lightCorrect)
             {
                 gM.SpotlightChecked(winNumber);
