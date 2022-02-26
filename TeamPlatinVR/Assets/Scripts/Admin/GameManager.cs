@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
 
     private bool keyCollected;
 
+    //NewsPaper-Parts List
+    private bool[] newspaperArray = new bool[4];
+
 
     private Vector3 playerPos;
     // Start is called before the first frame update
@@ -127,9 +130,14 @@ public class GameManager : MonoBehaviour
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
     }
 
-    public void ObjectFloatAnimation(GameObject obj)
+    public void FloatAnimation(GameObject obj, float value, float floatSpeed, float rotSpeed)
     {
-         
+        Vector3 pos = obj.transform.position;
+        float sinYPos = Mathf.Sin(Time.time * floatSpeed) / value;
+        float YPos = obj.transform.position.y;
+        float newY = sinYPos + YPos;
+        obj.transform.position = new Vector3(pos.x, newY, pos.z);
+        obj.transform.Rotate(Time.deltaTime * rotSpeed, 0, 0, Space.Self); 
     }
     
     IEnumerator RotationTime(int delay)
@@ -164,5 +172,15 @@ public class GameManager : MonoBehaviour
     public void KeyCollected()
     {
         keyCollected = true;
+    }
+
+    public void PickUpNewsPaper(int index)
+    {
+        newspaperArray[index] = true;
+    }
+
+    public bool[] GetNewsPaperPieces()
+    {
+        return newspaperArray;
     }
 }
