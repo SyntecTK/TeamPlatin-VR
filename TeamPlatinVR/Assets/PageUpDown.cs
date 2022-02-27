@@ -14,6 +14,12 @@ public class PageUpDown : GazeManager
     private Transform pageThreeTransform;
     private GameObject pageFour;
     private Transform pageFourTransform;
+    private int defaultRotation = 125;
+    private bool directionPositive;
+    private Transform page;
+    private float timeUntil1;
+    private float currentTimeDeltaTime;
+    private bool rotationActive;
 
     private static int bookState;
 
@@ -29,14 +35,28 @@ public class PageUpDown : GazeManager
         pageThreeTransform = pageThree.GetComponent<Transform>();
         pageFour = book.transform.GetChild(3).gameObject;
         pageFourTransform = pageFour.GetComponent<Transform>();
+        page = pageOneTransform;
 
         bookState = 1;
 
     }
 
+    private void FixedUpdate()
+    {
+        if (rotationActive && timeUntil1 < 1)
+        {
+            doRotation();
+        }
+        else
+        {
+            rotationActive = false;
+            timeUntil1 = 0;
+        }
+    }
+
     public override void ChangeOnGaze()
     {
-        
+
 
         switch (this.name)
         {
@@ -53,37 +73,57 @@ public class PageUpDown : GazeManager
 
     private void PageDown()
     {
+        directionPositive = false;
         switch (bookState)
         {
             case 1:
                 Debug.Log("Noooooo, I don't think sooo!");
                 break;
             case 2:
-                pageTwoTransform.Rotate(-129, 0, 0);
                 bookState--;
+                rotationActive = true;
+                page = pageTwoTransform;
                 break;
             case 3:
-                pageThreeTransform.Rotate(-129, 0, 0);
                 bookState--;
+                rotationActive = true;
+                page = pageThreeTransform;
                 break;
         }
     }
 
     private void PageUp()
     {
+        directionPositive = true;
         switch (bookState)
         {
             case 1:
-                pageTwoTransform.Rotate(129, 0, 0);
                 bookState++;
+                rotationActive = true;
+                page = pageTwoTransform;
                 break;
             case 2:
-                pageThreeTransform.Rotate(129, 0, 0);
                 bookState++;
+                rotationActive = true;
+                page = pageThreeTransform;
                 break;
             case 3:
                 Debug.Log("Noooooo, I don't think sooo!");
                 break;
+        }
+    }
+
+    private void doRotation()
+    {
+        currentTimeDeltaTime = Time.deltaTime;
+        timeUntil1 = timeUntil1 + currentTimeDeltaTime;
+        if (directionPositive)
+        {
+           page.Rotate(new Vector3(defaultRotation * currentTimeDeltaTime, 0f, 0f), Space.Self);
+        }
+        else
+        {
+            page.Rotate(new Vector3((-defaultRotation) * currentTimeDeltaTime, 0f, 0f), Space.Self);
         }
     }
 }
