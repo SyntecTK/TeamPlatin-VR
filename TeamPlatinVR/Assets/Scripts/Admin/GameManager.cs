@@ -93,6 +93,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void FirstPuzzleWin(AudioClip winSound, Material newSkybox)
+    {
+        GameObject.Find("Portrait_Bild").GetComponent<Renderer>().enabled = true;
+        GameObject.Find("Portrait").GetComponent<AudioSource>().Play();
+        GameObject.Find("Portrait").GetComponent<BoxCollider>().enabled = true;
+
+        AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
+        clockSounds.loop = false;
+        clockSounds.clip = winSound;
+        clockSounds.Play();
+
+        RenderSettings.skybox = newSkybox;
+    }
+
     public void CheckBlockPuzzle()
     {
         if(placedBlock_N && placedBlock_O && placedBlock_A && placedBlock_H)
@@ -133,7 +147,7 @@ public class GameManager : MonoBehaviour
     public void FloatAnimation(GameObject obj, float value, float floatSpeed, float rotSpeed)
     {
         Vector3 pos = obj.transform.position;
-        float sinYPos = Mathf.Sin(Time.time * floatSpeed) / value;
+        float sinYPos = Mathf.Sin(Time.fixedTime * Mathf.PI * floatSpeed) * value;
         float YPos = obj.transform.position.y;
         float newY = sinYPos + YPos;
         obj.transform.position = new Vector3(pos.x, newY, pos.z);

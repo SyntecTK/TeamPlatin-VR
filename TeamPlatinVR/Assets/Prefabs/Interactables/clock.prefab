@@ -92,10 +92,10 @@ GameObject:
   - component: {fileID: 1788673296277371007}
   - component: {fileID: 3178912747025470160}
   - component: {fileID: 51585627852018747}
-  - component: {fileID: 3529554863533794428}
   - component: {fileID: 3529554863533794429}
   - component: {fileID: 3529554863533794419}
   - component: {fileID: 3529554863533794418}
+  - component: {fileID: 6781476696789828837}
   m_Layer: 6
   m_Name: Clock_Gear01
   m_TagString: Clock_Gear01
@@ -166,30 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3529554863533794428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3529554863533794430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb330521ab84ec4fb4c7a3dcf221dc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gazeImage: {fileID: 0}
-  usedButton: {r: 0, g: 0, b: 0, a: 0}
-  portraitMaterial: {fileID: 2100000, guid: 9abebfa626c35e342b6b1e1f75fb5d29, type: 2}
-  newSkybox: {fileID: 2100000, guid: acfe94edc0f48564e914b4485e2d2ba9, type: 2}
-  winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
-  moveSound: {fileID: 0}
-  radio01: {fileID: 0}
-  radio02: {fileID: 0}
-  radio03: {fileID: 0}
-  radio04: {fileID: 0}
-  radio05: {fileID: 0}
-  duration: 1
 --- !u!114 &3529554863533794429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,8 +181,8 @@ MonoBehaviour:
   onHoverEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3529554863533794428}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 6781476696789828837}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: StartCount
         m_Mode: 1
         m_Arguments:
@@ -220,8 +196,8 @@ MonoBehaviour:
   onHoverExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3529554863533794428}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 6781476696789828837}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: ChangeOffGaze
         m_Mode: 1
         m_Arguments:
@@ -348,6 +324,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6781476696789828837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529554863533794430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e14e41ac5ce5946b61447b9653b016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeImage: {fileID: 0}
+  duration: 1
+  winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
+  newSkybox: {fileID: 2100000, guid: acfe94edc0f48564e914b4485e2d2ba9, type: 2}
 --- !u!1 &4327888071360188716
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,12 +974,12 @@ GameObject:
   - component: {fileID: 819326307540672566}
   - component: {fileID: 3069648410470379418}
   - component: {fileID: 14996878879606177}
-  - component: {fileID: 9003929711829628162}
   - component: {fileID: 9003929711829628161}
+  - component: {fileID: 9146750369739098388}
   - component: {fileID: 9003929711829628160}
   - component: {fileID: 9003929711829628167}
   m_Layer: 6
-  m_Name: Gear.002
+  m_Name: Clock_Gear02
   m_TagString: Clock_Gear02
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1056,30 +1048,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9003929711829628162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9003929711829628163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb330521ab84ec4fb4c7a3dcf221dc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gazeImage: {fileID: 0}
-  usedButton: {r: 0, g: 0, b: 0, a: 0}
-  portraitMaterial: {fileID: 2100000, guid: 9abebfa626c35e342b6b1e1f75fb5d29, type: 2}
-  newSkybox: {fileID: 2100000, guid: acfe94edc0f48564e914b4485e2d2ba9, type: 2}
-  winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
-  moveSound: {fileID: 0}
-  radio01: {fileID: 0}
-  radio02: {fileID: 0}
-  radio03: {fileID: 0}
-  radio04: {fileID: 0}
-  radio05: {fileID: 0}
-  duration: 1
 --- !u!64 &9003929711829628161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1094,6 +1062,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1021589670348731796, guid: 6002e9e1cbf3e13479f5c8a85f37eec2, type: 3}
+--- !u!114 &9146750369739098388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003929711829628163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e14e41ac5ce5946b61447b9653b016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeImage: {fileID: 0}
+  duration: 1
+  winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
+  newSkybox: {fileID: 2100000, guid: acfe94edc0f48564e914b4485e2d2ba9, type: 2}
 --- !u!114 &9003929711829628160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,8 +1093,8 @@ MonoBehaviour:
   onHoverEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9003929711829628162}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 9146750369739098388}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: StartCount
         m_Mode: 1
         m_Arguments:
@@ -1124,8 +1108,8 @@ MonoBehaviour:
   onHoverExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9003929711829628162}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 9146750369739098388}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: ChangeOffGaze
         m_Mode: 1
         m_Arguments:
