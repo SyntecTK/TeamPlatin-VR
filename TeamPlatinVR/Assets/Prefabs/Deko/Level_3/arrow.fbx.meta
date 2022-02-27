@@ -1,49 +1,9 @@
 fileFormatVersion: 2
-guid: d93d4a8466d059b4dae7921f71a0dfe6
+guid: 30d2812eed2c1384e848c2e2f81abcbc
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Book-Mat.001
-    second: {fileID: 2100000, guid: 99a0110d0afc3474e9ed6c0a6d3e0a4c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Page-Mat-Page4
-    second: {fileID: 2100000, guid: ba9f38e9ffcc93041b0cadcb70edb51b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Page-Mat.001
-    second: {fileID: 2100000, guid: d88dabae43926b24a92adf0ff616f984, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Page-Mat_Page1
-    second: {fileID: 2100000, guid: d94300530fd79154fb2653cb249ae395, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Schnipsel-Mat1
-    second: {fileID: 2100000, guid: a67446f075b922a4e9c1d3d22a76f8d6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Schnipsel-Mat2
-    second: {fileID: 2100000, guid: 9623df9423e5eeb4bb096af442b15c14, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Schnipsel-Mat3
-    second: {fileID: 2100000, guid: 2370ca393d9f0954caed3a0cabf8ac83, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Text-Mat
-    second: {fileID: 2100000, guid: 074dce9a823ed284ab106969704003d7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
