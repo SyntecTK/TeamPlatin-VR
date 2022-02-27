@@ -1,9 +1,184 @@
 fileFormatVersion: 2
-guid: 5e86aeeb924bb404a8aab445538f1949
+guid: 0812fb1df443a73428dfd61c40c25d27
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: c1c30ead80551694ca1f7bfdb318bfce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Bl\xE4tter"
+    second: {fileID: 2100000, guid: ade10f3151c87d0418a5d3e6436f4faf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ButtonMaterial
+    second: {fileID: 2100000, guid: e0eb71f890ab5e0408d4cc2ce4715a0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CarrotMaterial
+    second: {fileID: 2100000, guid: 5b2729aeed3b8fa46958d888077ea810, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eisenbahnrad
+    second: {fileID: 2100000, guid: 76089221717bfa14ba3ad42b577ecdfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HatQuarternary
+    second: {fileID: 2100000, guid: 6cf0c26f54d3bd04b883a9f8b6a5dde8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HatStandard
+    second: {fileID: 2100000, guid: 42e30c907e4870241839aab3aff00879, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HatTertiary
+    second: {fileID: 2100000, guid: 45e484060bbab1944bacbd0aeddff923, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Holz
+    second: {fileID: 2100000, guid: fad5b7fe5529cd44198ba9269572b4d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hospital_Bed-Grey
+    second: {fileID: 2100000, guid: 4e991e2492c7b03479f75db3359b6f19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hospital_Bed-Wheel
+    second: {fileID: 2100000, guid: f9e518cb361983b4585e261846b3f868, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hospital_Bed_Metallic
+    second: {fileID: 2100000, guid: 2e45610dc1f778f49b2c0277cbc51e21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 6b392cec2441213428f4d82c0c109973, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 4c30f08c87c6fe24c872fc3109ac7ec1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: f9c046ed3d3bdc44c83ac360a255105e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 8e8b0b0b030b2b3489dae0f85869cb77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: e5614141a3d0aec41ba4a36d20cb3167, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: fd7af904eb35ea245b4f1b31d1e467c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 700fbcd06cb01554cb20bb340a2452ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: 3b22d527c4fc96344b43922597fe2f93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: e6aab58bae984e8439cf64649c143df5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 102ee3798da52cf408b74acfbd30e798, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.013
+    second: {fileID: 2100000, guid: 9d5f978b0a853234da0128cc38c875da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.014
+    second: {fileID: 2100000, guid: 371074bb2caa4f84fa8b4fa691a90d46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.016
+    second: {fileID: 2100000, guid: c8a65f889d8d7424eab6d639f59c7228, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schnee
+    second: {fileID: 2100000, guid: 89cb296e5a3657540929bb86f4ed95dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skistock Color.001
+    second: {fileID: 2100000, guid: 58139b0a4add0fb4db0ee87bf99b8177, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skistock Metal.001
+    second: {fileID: 2100000, guid: e60093086af6ad447b3731e5b2a86030, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SnowMaterial
+    second: {fileID: 2100000, guid: 917daf407f0e5f44281a2d730fb74a45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone
+    second: {fileID: 2100000, guid: f7886b317a8c1ff4d8a38cec10928709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TopHatMaterial
+    second: {fileID: 2100000, guid: 5b649c912d7052e4c96a850a761c20a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TopHatRedMaterial
+    second: {fileID: 2100000, guid: a5a2a6d5bb5615c459914d276d45b10a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodMaterial
+    second: {fileID: 2100000, guid: 297acc9479f8a334b9e435f502b27508, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MedTexture
+    second: {fileID: 2800000, guid: 579489a8062c08e48b1a46deb319f9f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NewsPaper_Bold
+    second: {fileID: 2800000, guid: 87d474fe32e12374b959a9b1e5da4b22, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -33,6 +33,7 @@ public class SpotlightBehaviour : GazeManager
             number.SetActive(false);
             active = false;
         }
+        GetComponent<AudioSource>().Play();
         
     }
 }

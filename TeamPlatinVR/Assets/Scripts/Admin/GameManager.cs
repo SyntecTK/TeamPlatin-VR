@@ -44,15 +44,20 @@ public class GameManager : MonoBehaviour
 
     private bool keyCollected;
 
+    //NewsPaper-Parts List
+    private bool[] newspaperArray = new bool[4];
+
 
     private Vector3 playerPos;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("XR Rig");
-        playerPos = player.transform.position;
+        player.transform.position = GameObject.Find("StartingMovePoint").transform.position;
 
+        playerPos = player.transform.position;
         playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
+        
     
         jbRotation = new Vector3(100, 0, 0);
         gazeObject = null;
@@ -86,6 +91,20 @@ public class GameManager : MonoBehaviour
             Transform handle = GameObject.Find("jackbox-handle").GetComponent<Transform>();
             handle.Rotate(0.2f, 0, 0, Space.Self);
         }
+    }
+
+    public void FirstPuzzleWin(AudioClip winSound, Material newSkybox)
+    {
+        GameObject.Find("Portrait_Bild").GetComponent<Renderer>().enabled = true;
+        GameObject.Find("Portrait").GetComponent<AudioSource>().Play();
+        GameObject.Find("Portrait").GetComponent<BoxCollider>().enabled = true;
+
+        AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
+        clockSounds.loop = false;
+        clockSounds.clip = winSound;
+        clockSounds.Play();
+
+        RenderSettings.skybox = newSkybox;
     }
 
     public void CheckBlockPuzzle()
@@ -125,9 +144,14 @@ public class GameManager : MonoBehaviour
         rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
     }
 
-    public void ObjectFloatAnimation(GameObject obj)
+    public void FloatAnimation(GameObject obj, float value, float floatSpeed, float rotSpeed)
     {
-         
+        Vector3 pos = obj.transform.position;
+        float sinYPos = Mathf.Sin(Time.fixedTime * Mathf.PI * floatSpeed) * value;
+        float YPos = obj.transform.position.y;
+        float newY = sinYPos + YPos;
+        obj.transform.position = new Vector3(pos.x, newY, pos.z);
+        obj.transform.Rotate(Time.deltaTime * rotSpeed, 0, 0, Space.Self); 
     }
     
     IEnumerator RotationTime(int delay)
@@ -162,5 +186,15 @@ public class GameManager : MonoBehaviour
     public void KeyCollected()
     {
         keyCollected = true;
+    }
+
+    public void PickUpNewsPaper(int index)
+    {
+        newspaperArray[index] = true;
+    }
+
+    public bool[] GetNewsPaperPieces()
+    {
+        return newspaperArray;
     }
 }

@@ -25,6 +25,7 @@ public class KeyBehaviour : GazeManager
     public override void ChangeOnGaze()
     {
         GameObject.Find("Portrait_Bild").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.Find("portrait").GetComponent<BoxCollider>().enabled = true;
         gM.KeyCollected();
         winSound.Play();
         StartCoroutine(DestroyObjectAfterDelay(3));

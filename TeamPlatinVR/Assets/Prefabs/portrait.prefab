@@ -93,8 +93,9 @@ GameObject:
   - component: {fileID: 7700116869490987348}
   - component: {fileID: 5564399886063904158}
   - component: {fileID: 3665612879873218538}
+  - component: {fileID: 3378551060322082024}
   m_Layer: 6
-  m_Name: portrait
+  m_Name: Portrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,3 +179,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.101781, y: 2.0928679, z: 2.2526486}
   m_Center: {x: 0.0012497306, y: -0.0074974895, z: 0.009717345}
+--- !u!114 &3378551060322082024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212790758559155275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd005ccecfbe55a43ab337daa649de02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeImage: {fileID: 0}
+  duration: 1
