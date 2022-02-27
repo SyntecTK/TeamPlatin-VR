@@ -14,7 +14,7 @@ public class PageUpDown : GazeManager
     private Transform pageThreeTransform;
     private GameObject pageFour;
     private Transform pageFourTransform;
-    private int defaultRotation = 125;
+    private int defaultRotation;
     private bool directionPositive;
     private Transform page;
     private float timeUntil1;
@@ -38,6 +38,7 @@ public class PageUpDown : GazeManager
         page = pageOneTransform;
 
         bookState = 1;
+        defaultRotation = 165;
 
     }
 
