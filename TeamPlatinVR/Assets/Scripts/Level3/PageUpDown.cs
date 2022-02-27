@@ -30,6 +30,10 @@ public class PageUpDown : GazeManager
         pageFour = book.transform.GetChild(3).gameObject;
         pageFourTransform = pageFour.GetComponent<Transform>();
 
+        for(int i=0; i<4; i++){
+            book.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+
         bookState = 1;
 
     }
@@ -37,14 +41,25 @@ public class PageUpDown : GazeManager
     public override void ChangeOnGaze()
     {
         
-
+        for(int i=0; i<4; i++){
+            book.transform.GetChild(i).gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
         switch (this.name)
         {
-            case "Cube":
+            case "PageDownArrow":
                 PageDown();
                 break;
-            case "Cube (1)":
+            case "PageUpArrow":
                 PageUp();
+                break;
+            case "Choice1Snippet":
+                Snippet1Action();
+                break;
+            case "Choice2Snippet":
+                Snippet2Action();
+                break;
+            case "Choice3Snippet":
+                Snippet3Action();
                 break;
         }
 
@@ -59,11 +74,11 @@ public class PageUpDown : GazeManager
                 Debug.Log("Noooooo, I don't think sooo!");
                 break;
             case 2:
-                pageTwoTransform.Rotate(-129, 0, 0);
+                pageTwoTransform.Rotate(-165, 0, 0);
                 bookState--;
                 break;
             case 3:
-                pageThreeTransform.Rotate(-129, 0, 0);
+                pageThreeTransform.Rotate(-165, 0, 0);
                 bookState--;
                 break;
         }
@@ -74,16 +89,28 @@ public class PageUpDown : GazeManager
         switch (bookState)
         {
             case 1:
-                pageTwoTransform.Rotate(129, 0, 0);
+                pageTwoTransform.Rotate(165, 0, 0);
                 bookState++;
                 break;
             case 2:
-                pageThreeTransform.Rotate(129, 0, 0);
+                pageThreeTransform.Rotate(165, 0, 0);
                 bookState++;
                 break;
             case 3:
                 Debug.Log("Noooooo, I don't think sooo!");
                 break;
         }
+    }
+
+    private void Snippet1Action(){
+        
+    }
+
+    private void Snippet2Action(){
+        
+    }
+
+    private void Snippet3Action(){
+        
     }
 }
