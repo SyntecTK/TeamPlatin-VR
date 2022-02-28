@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 3928792971322538729}
   - component: {fileID: 3928792971322538728}
   - component: {fileID: 3928792971322538735}
-  - component: {fileID: 3928792971322538724}
-  - component: {fileID: 7675115991126994483}
   - component: {fileID: 7921057017723023338}
+  - component: {fileID: 1207103154108944434}
   m_Layer: 6
   m_Name: MovePoint
   m_TagString: MovePoint
@@ -114,8 +113,8 @@ MonoBehaviour:
   onHoverEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7675115991126994483}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 1207103154108944434}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: StartCount
         m_Mode: 1
         m_Arguments:
@@ -129,8 +128,8 @@ MonoBehaviour:
   onHoverExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7675115991126994483}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 1207103154108944434}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: ChangeOffGaze
         m_Mode: 1
         m_Arguments:
@@ -147,47 +146,6 @@ MonoBehaviour:
   onSelectExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3928792971322538724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3928792971322538733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 6bf032e54756a7b45872114fbaf6e94f, type: 2}
---- !u!114 &7675115991126994483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3928792971322538733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb330521ab84ec4fb4c7a3dcf221dc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gazeImage: {fileID: 0}
-  usedButton: {r: 0, g: 0, b: 0, a: 0}
-  portraitMaterial: {fileID: 0}
-  newSkybox: {fileID: 0}
-  winSound: {fileID: 0}
-  moveSound: {fileID: 0}
-  radio01: {fileID: 0}
-  radio02: {fileID: 0}
-  radio03: {fileID: 0}
-  radio04: {fileID: 0}
-  radio05: {fileID: 0}
-  duration: 2
 --- !u!82 &7921057017723023338
 AudioSource:
   m_ObjectHideFlags: 0
@@ -284,3 +242,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1207103154108944434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3928792971322538733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c439fbec6327942ad7bc79b06ac00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeImage: {fileID: 0}
+  duration: 1

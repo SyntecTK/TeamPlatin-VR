@@ -17,7 +17,11 @@ public class NewsPaperBehaviour : GazeManager
         for(int i = 0; i < newspaperPieces.Length; i++)
         {
             if(newspaperPieces[i])
+            {
                 transform.GetChild(i).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                GetComponent<AudioSource>().Play();
+            }
+                
         }
     }
     

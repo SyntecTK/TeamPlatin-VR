@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2207258810979338722}
   - component: {fileID: 1579095085695767387}
-  - component: {fileID: 1579095085695767386}
+  - component: {fileID: 4745482175611557312}
   - component: {fileID: 1579095085695767385}
+  - component: {fileID: 6890636125159912360}
   m_Layer: 6
   m_Name: Lamp
   m_TagString: Lamp
@@ -49,7 +50,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.16, z: 1.24}
   m_Center: {x: 0, y: 1.64, z: 0}
---- !u!114 &1579095085695767386
+--- !u!114 &4745482175611557312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,20 +59,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579095085695767384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb330521ab84ec4fb4c7a3dcf221dc8, type: 3}
+  m_Script: {fileID: 11500000, guid: ed1637cdc18a42545818c01f2d125c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gazeImage: {fileID: 0}
-  usedButton: {r: 0, g: 0, b: 0, a: 0}
-  portraitMaterial: {fileID: 2100000, guid: 9abebfa626c35e342b6b1e1f75fb5d29, type: 2}
-  newSkybox: {fileID: 0}
-  winSound: {fileID: 8300000, guid: 166055921c3af50458951f855ce20174, type: 3}
-  moveSound: {fileID: 0}
-  radio01: {fileID: 0}
-  radio02: {fileID: 0}
-  radio03: {fileID: 0}
-  radio04: {fileID: 0}
-  radio05: {fileID: 0}
   duration: 1
 --- !u!114 &1579095085695767385
 MonoBehaviour:
@@ -88,8 +79,8 @@ MonoBehaviour:
   onHoverEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1579095085695767386}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 4745482175611557312}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: StartCount
         m_Mode: 1
         m_Arguments:
@@ -103,8 +94,8 @@ MonoBehaviour:
   onHoverExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1579095085695767386}
-        m_TargetAssemblyTypeName: GazeInteraction, Assembly-CSharp
+      - m_Target: {fileID: 4745482175611557312}
+        m_TargetAssemblyTypeName: GazeManager, Assembly-CSharp
         m_MethodName: ChangeOffGaze
         m_Mode: 1
         m_Arguments:
@@ -121,6 +112,102 @@ MonoBehaviour:
   onSelectExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!82 &6890636125159912360
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579095085695767384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 40dc7067ea0ec1649be148791b1ba1bd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1813678845219657471
 GameObject:
   m_ObjectHideFlags: 0
