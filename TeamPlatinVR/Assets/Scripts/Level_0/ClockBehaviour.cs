@@ -11,13 +11,20 @@ public class ClockBehaviour : GazeManager
     [SerializeField]
     private AudioClip winSound;
     [SerializeField]
+    private AudioClip breakSound;
+    [SerializeField]
     private Material newSkybox;
+    public GameObject brokenGears;
+    private GameObject clockGearSmall;
+    private GameObject clockGearBig;
 
     public override void Start()
     {
         base.Start();
         clock_hand_long = GameObject.Find("Big_Pointer");
         clock_hand_short = GameObject.Find("Small_Pointer");
+        clockGearBig = GameObject.Find("Clock_Gear01");
+        clockGearSmall = GameObject.Find("Clock_Gear02");
     }
 
     public override void ChangeOnGaze()
@@ -45,7 +52,20 @@ public class ClockBehaviour : GazeManager
         if(clock_hand_long.transform.eulerAngles.z >= 80 && clock_hand_long.transform.eulerAngles.z <= 90 &&
         clock_hand_short.transform.eulerAngles.z >= 350 && clock_hand_short.transform.eulerAngles.z <= 360)
         {
-            gM.FirstPuzzleWin(winSound, newSkybox);
+            StartCoroutine(PlaySounds());
         }
     }
+
+    IEnumerator PlaySounds()
+    {
+        clockGearSmall.GetComponent<MeshRenderer>().enabled = false;
+        clockGearSmall.GetComponent<MeshCollider>().enabled = false;
+        clockGearBig.GetComponent<MeshRenderer>().enabled = false;
+        clockGearBig.GetComponent<MeshCollider>().enabled = false;
+        GetComponent<AudioSource>().clip = breakSound;
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1);
+        gM.FirstPuzzleWin(winSound, newSkybox);
+    }
+
 }
