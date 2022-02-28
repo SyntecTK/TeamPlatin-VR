@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
         
         gazeObject = null;
+        newspaperArray[0] = true;
     }
 
     // Update is called once per frame

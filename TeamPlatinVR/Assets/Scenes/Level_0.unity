@@ -1838,10 +1838,6 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 161288761}
-    - target: {fileID: 3064497786957670559, guid: 9fc94cf8cb6e5e94c8f2cd4f41d89f6b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3736482072028159872, guid: 9fc94cf8cb6e5e94c8f2cd4f41d89f6b, type: 3}
       propertyPath: m_Enabled
       value: 0

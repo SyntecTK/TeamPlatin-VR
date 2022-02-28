@@ -7,6 +7,7 @@ public class PageUpDown : GazeManager
 
     public GameObject book;
     public GameObject UIElements;
+
     private GameObject pageOne;
     private Transform pageOneTransform;
     private GameObject pageTwo;
@@ -41,6 +42,11 @@ public class PageUpDown : GazeManager
     private bool visibilityBool;
 
     private static int bookState;
+
+    //Portrtait
+    private GameObject portraitImage;
+    [SerializeField]
+    private AudioClip winSound;
 
     public override void Start()
     {
@@ -84,6 +90,8 @@ public class PageUpDown : GazeManager
         bookState = 1;
         defaultRotation = 165;
 
+        //Portrait
+        portraitImage = GameObject.Find("Portrait_Bild");
     }
 
     private void FixedUpdate()
@@ -101,15 +109,13 @@ public class PageUpDown : GazeManager
 
     public override void ChangeOnGaze()
     {
-
-
         switch (this.name)
         {
             case "arrowLeft":
                 PageDown();
                 break;
             case "arrowRight":
-                PageUp();
+                PageUp();               
                 break;
             case "Choice1Snippet":
                 SnippetAction(0);
@@ -121,7 +127,7 @@ public class PageUpDown : GazeManager
                 SnippetAction(2);
                 break;
         }
-
+        GetComponent<AudioSource>().Play();
         Debug.Log(bookState);
     }
 
@@ -257,8 +263,9 @@ public class PageUpDown : GazeManager
             originalTextList[3].GetComponent<Renderer>().enabled == true &&
             originalTextList[8].GetComponent<Renderer>().enabled == true)
         {
-            //enter what happens when won
-            Debug.Log("You won!");
+            portraitImage.GetComponent<MeshRenderer>().enabled = true;
+            portraitImage.GetComponent<BoxCollider>().enabled = true;
+            GetComponent<AudioSource>().clip = winSound;
         }
     }
 }

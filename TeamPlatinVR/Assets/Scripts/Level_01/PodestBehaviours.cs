@@ -5,14 +5,12 @@ using UnityEngine;
 public class PodestBehaviours : GazeManager
 {
     private Transform chestTop;
-    private GameObject portraitImage;
     private GameObject gears;
 
     public override void Start()
     {
         base.Start();
         chestTop = GameObject.Find("Chest_Top").GetComponent<Transform>();
-        portraitImage = GameObject.Find("Portrait_Bild");
         gears = GameObject.Find("Gears");
     }
 
@@ -53,8 +51,6 @@ public class PodestBehaviours : GazeManager
         {
             chestTop.Rotate(new Vector3(0, 0, 50));
             chestTop.GetComponent<AudioSource>().Play();
-            portraitImage.GetComponent<MeshRenderer>().enabled = true;
-            portraitImage.GetComponent<BoxCollider>().enabled = true;
             gears.GetComponent<BoxCollider>().enabled = true;
         }
     }

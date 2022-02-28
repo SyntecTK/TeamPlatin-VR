@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Gears : GazeManager
 {
-    // Start is called before the first frame update
+    private GameObject portraitImage;
     public override void Start()
     {
         base.Start();
+        portraitImage = GameObject.Find("Portrait_Bild");
     }
 
     public override void ChangeOnGaze()
@@ -17,6 +18,9 @@ public class Gears : GazeManager
         GetComponent<BoxCollider>().enabled = false;
         transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = false;
         transform.GetChild(1).gameObject.GetComponent<Renderer>().enabled = false;
+        portraitImage.GetComponent<MeshRenderer>().enabled = true;
+        portraitImage.GetComponent<BoxCollider>().enabled = true;
+        gM.NextGameState();
     }
 
 }
