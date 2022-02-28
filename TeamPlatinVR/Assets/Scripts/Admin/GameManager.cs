@@ -5,46 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Camera myCam;
     private GameObject player;
-
     private GameObject gazeObject;
 
-    private Rigidbody rbBlock;
+    private int gameState;
 
-    [HideInInspector]
-    public bool teddyCollected;
+    //BedroomLevel
+    private bool teddyCollected;
+    private bool gearsCollected;
+    private bool[] pickedUpBlocks = new bool[4];
+    private bool[] placedBlocks = new bool[4];
 
-    //JackBox
-    public bool rotating;
-    public int spins = 0;
-
-    //Block Interactions
-    public bool pickUpBlock_N;
-    public bool pickUpBlock_O;
-    public bool pickUpBlock_A;
-    public bool pickUpBlock_H;
-
-    public bool placedBlock_N;
-    public bool placedBlock_O;
-    public bool placedBlock_A;
-    public bool placedBlock_H;
-
-    //Interactables
-    public GameObject jackBox;
-        private Transform jbHandle;
-        private Vector3 jbRotation;
-
-    //Chest
-    private Transform chestTop;
-
-    //Spotlight List
+    //DiscoLevel
     private bool[] spotlightArray = new bool[4];
-
     public bool destroyDiscoball;
-
     private bool keyCollected;
 
-    //NewsPaper-Parts List
+    //SnowLevel
     private bool[] newspaperArray = new bool[4];
 
 
@@ -58,19 +36,7 @@ public class GameManager : MonoBehaviour
         playerPos = player.transform.position;
         playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
         
-    
-        jbRotation = new Vector3(100, 0, 0);
         gazeObject = null;
-
-        rotating = false;
-
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            rbBlock = GameObject.Find("Block_O").GetComponent<Rigidbody>();
-            chestTop = GameObject.Find("Chest_Top").GetComponent<Transform>();
-        }
-        
-
     }
 
     // Update is called once per frame
@@ -78,27 +44,35 @@ public class GameManager : MonoBehaviour
     {
         if(gazeObject != null)
         {
-            ManageJackBox();
-        }
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            //Debug.Log("Current Object: " + gazeObject.name);
-            rbBlock.AddForce(Vector3.back * 200);
+            Debug.Log("Gaze Object Name: " + gameObject.name);
         }
 
-        if(rotating)
+        if(Input.GetKeyDown(KeyCode.F))
         {
-            Transform handle = GameObject.Find("jackbox-handle").GetComponent<Transform>();
-            handle.Rotate(0.2f, 0, 0, Space.Self);
+            myCam.enabled = false;
         }
+        if(Input.GetKeyUp(KeyCode.F))
+        {
+            myCam.enabled = true;
+        }
+    }
+
+    public int GameState()
+    {
+        return gameState;
+    }
+
+    public void NextGameState()
+    {
+        gameState++;
     }
 
     public void FirstPuzzleWin(AudioClip winSound, Material newSkybox)
     {
         GameObject.Find("Portrait_Bild").GetComponent<Renderer>().enabled = true;
+        GameObject.Find("Portrait_Bild").GetComponent<BoxCollider>().enabled = true;
         GameObject.Find("Portrait").GetComponent<AudioSource>().Play();
-        GameObject.Find("Portrait").GetComponent<BoxCollider>().enabled = true;
-
+        
         AudioSource clockSounds = GameObject.Find("Grandfather-Clock").GetComponent<AudioSource>();
         clockSounds.loop = false;
         clockSounds.clip = winSound;
@@ -107,41 +81,10 @@ public class GameManager : MonoBehaviour
         RenderSettings.skybox = newSkybox;
     }
 
-    public void CheckBlockPuzzle()
-    {
-        if(placedBlock_N && placedBlock_O && placedBlock_A && placedBlock_H)
-        {
-            chestTop.Rotate(new Vector3(0, 0, 50));
-            chestTop.GetComponent<AudioSource>().Play();
-            GameObject.Find("Portrait_Bild").GetComponent<MeshRenderer>().enabled = true;
-        }
-    }
-
-    public void SetGazedObject(GameObject obj)
-    {
-        gazeObject = obj;
-    }
-
     public void MovePlayer(Vector3 location)
     {
         player.transform.position = new Vector3(location.x, location.y, location.z);
         playerPos = player.transform.position;
-    }
-
-    public void ManageJackBox()
-    {
-        Debug.Log("Gaze Object Name: " + gameObject.name);
-        if(gazeObject.name == "jackBox")
-        {
-            jbHandle =  gazeObject.transform.GetChild(1);
-            if(rotating)
-                jbHandle.Rotate(jbRotation * Time.deltaTime, Space.Self);
-        }
-    }
-
-    public void RotateObject(GameObject rotationObject, Vector3 rotation)
-    {
-        rotationObject.transform.Rotate(rotation * Time.deltaTime, Space.Self);
     }
 
     public void FloatAnimation(GameObject obj, float value, float floatSpeed, float rotSpeed)
@@ -153,12 +96,47 @@ public class GameManager : MonoBehaviour
         obj.transform.position = new Vector3(pos.x, newY, pos.z);
         obj.transform.Rotate(Time.deltaTime * rotSpeed, 0, 0, Space.Self); 
     }
-    
-    IEnumerator RotationTime(int delay)
+
+    public void PickUpTeddy()
     {
-        rotating = true;
-        yield return new WaitForSeconds(delay);
-        rotating = false;
+        teddyCollected = true;
+    }
+
+    public bool TeddyPickedUp()
+    {
+        return teddyCollected;
+    }
+
+    public void PickUpGears()
+    {
+        gearsCollected = true;
+    }
+
+    public void PickUpBlock(int blockNumber)
+    {
+        pickedUpBlocks[blockNumber] = true;
+    }
+
+    public void PlaceBlocks(int blockNumber)
+    {
+        placedBlocks[blockNumber] = true;
+    }
+
+    public bool IsBlockPickedUp(int blockNumber)
+    {
+        return pickedUpBlocks[blockNumber];
+    }
+
+    public bool CheckBlockPuzzle()
+    {
+        for(int i = 0; i < placedBlocks.Length; i++)
+        {
+            if(placedBlocks[i] == false)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void SpotlightChecked(int spotlightIndex)

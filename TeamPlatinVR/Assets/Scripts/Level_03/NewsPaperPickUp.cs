@@ -15,6 +15,14 @@ public class NewsPaperPickUp : GazeManager
     public override void ChangeOnGaze()
     {
         gM.PickUpNewsPaper(newspaperIndex);
+        GetComponent<AudioSource>().Play();
+        StartCoroutine(DelayDestroy());
+    }
+
+    IEnumerator DelayDestroy()
+    {
+        GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
 }

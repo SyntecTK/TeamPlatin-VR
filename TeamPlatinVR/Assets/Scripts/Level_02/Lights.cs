@@ -43,7 +43,7 @@ public class Lights : GazeManager
         winColor = glassMat.GetColor("_EmissionColor");
         
         color1 = new Color(0, 155, 204);    //Türkis
-        color2 = new Color(4, 191, 0);     //Grün
+        color2 = new Color(4, 191, 0);      //Grün
         color3 = new Color(199, 0, 204);    //Pink
         color4 = new Color(196, 204, 0);    //Yellow
 

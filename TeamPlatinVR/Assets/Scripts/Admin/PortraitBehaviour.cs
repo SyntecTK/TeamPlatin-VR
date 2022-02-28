@@ -6,28 +6,42 @@ using UnityEngine.SceneManagement;
 public class PortraitBehaviour : GazeManager
 {
     private int sceneIndex;
+    public GameObject loadingScreen;
     
     public override void Start()
     {
+        base.Start();
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
-    }
-
-    public override void Update()
-    {
-        base.Update();
     }
 
     public override void ChangeOnGaze()
     {
         if(sceneIndex == 0)
         {
+            switch(gM.GameState())
+            {
+                case 0:
+                    StartCoroutine(LoadNextScene(1));
+                    break;
+                case 1:
+                    StartCoroutine(LoadNextScene(2));
+                    break;
+            }
             
         }else if(sceneIndex == 1)
         {
-            
+            StartCoroutine(LoadNextScene(0));
         }else if(sceneIndex == 2)
         {
-            SceneManager.LoadScene(0);
+            StartCoroutine(LoadNextScene(0));
         }
+    }
+
+    IEnumerator LoadNextScene(int scene)
+    {
+        loadingScreen.SetActive(true);
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(scene);
     }
 }
