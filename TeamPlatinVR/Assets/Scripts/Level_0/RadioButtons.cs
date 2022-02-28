@@ -46,25 +46,25 @@ public class RadioButtons : GazeManager
                 radio.Play();
                 break;
             case "Button 2":
-                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.03f);
+                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.075f);
                 radio.Stop();
                 radio.clip = radio02;
                 radio.Play();
                 break;
             case "Button 3":
-                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.06f);
+                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.15f);
                 radio.Stop();
                 radio.clip = radio03;
                 radio.Play();
                 break;
             case "Button 4":
-                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.09f);
+                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.225f);
                 radio.Stop();
                 radio.clip = radio04;
                 radio.Play();
                 break;
             case "Button 5":
-                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.12f);
+                pointer.transform.position = pointerStartPos + new Vector3(0, 0, 0.30f);
                 radio.Stop();
                 radio.clip = radio05;
                 radio.Play();

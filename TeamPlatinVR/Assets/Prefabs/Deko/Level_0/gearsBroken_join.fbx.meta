@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 92dc7fb352a245343b54b29a860ac9e8
+guid: 1b4b5ab1c33d8ae43be46ec328e86e03
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: TravelDiscoveyMagazine
-    second: {fileID: 2800000, guid: c2d76d5dcd932f641b3d4258c906c1f9, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

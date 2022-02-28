@@ -3,7 +3,12 @@ guid: 3fcc99eba60e2ce4db6927ff79693a7f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PartyInvite
+    second: {fileID: 2800000, guid: e0ae15d14ed77134bb4ed4c550689dfb, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

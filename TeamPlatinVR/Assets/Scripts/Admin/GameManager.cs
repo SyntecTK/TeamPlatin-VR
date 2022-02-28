@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private GameObject gazeObject;
 
-    private int gameState;
+    private static int gameState;
 
     //BedroomLevel
     private bool teddyCollected;
@@ -46,15 +46,6 @@ public class GameManager : MonoBehaviour
         if(gazeObject != null)
         {
             Debug.Log("Gaze Object Name: " + gameObject.name);
-        }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            myCam.enabled = false;
-        }
-        if(Input.GetKeyUp(KeyCode.F))
-        {
-            myCam.enabled = true;
         }
     }
 
