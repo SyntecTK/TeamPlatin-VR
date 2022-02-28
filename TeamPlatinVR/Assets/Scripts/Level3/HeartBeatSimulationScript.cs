@@ -11,6 +11,7 @@ public class HeartBeatSimulationScript : MonoBehaviour
     private int textureNumber;
     private float counter;
     private bool textureOne;
+    private AudioSource piep;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class HeartBeatSimulationScript : MonoBehaviour
         textures[1] = peakTexture;
         textureNumber = 0;
         counter = 0;
+        piep = GetComponent<AudioSource>();
     }
 
     void FixedUpdate(){
@@ -29,11 +31,13 @@ public class HeartBeatSimulationScript : MonoBehaviour
             textureNumber = 1;
             ChangeTexture();
             textureOne = true;
+            piep.Play();
         } else if (textureOne && counter>1){
             textureNumber = 0;
             ChangeTexture();
             counter = 0;
             textureOne = false;
+            piep.Stop();
         }
     }
 
