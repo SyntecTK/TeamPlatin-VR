@@ -10,7 +10,7 @@ public class LevelHints : MonoBehaviour
 
     private GameManager gM;
 
-    private void Start()
+    private void Awake()
     {
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         teddy = transform.GetChild(0).gameObject;

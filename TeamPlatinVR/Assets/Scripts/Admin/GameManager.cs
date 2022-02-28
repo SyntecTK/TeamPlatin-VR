@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         
         gazeObject = null;
         newspaperArray[0] = true;
+        Debug.Log(gameState);
     }
 
     // Update is called once per frame
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
     //Diese Methode nutzen die Movepoints um den Player zu bewegen
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = new Vector3(location.x, location.y - 1f, location.z);
+        player.transform.position = new Vector3(location.x, location.y, location.z);
         playerPos = player.transform.position;
     }
 
