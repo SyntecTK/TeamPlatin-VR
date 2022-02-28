@@ -54,7 +54,7 @@ public class PodestBehaviours : GazeManager
             chestTop.Rotate(new Vector3(0, 0, 50));
             chestTop.GetComponent<AudioSource>().Play();
             portraitImage.GetComponent<MeshRenderer>().enabled = true;
-            portraitImage.GetComponent<MeshCollider>().enabled = true;
+            portraitImage.GetComponent<BoxCollider>().enabled = true;
             gears.GetComponent<BoxCollider>().enabled = true;
         }
     }

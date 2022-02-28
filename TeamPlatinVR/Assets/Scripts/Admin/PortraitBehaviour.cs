@@ -16,24 +16,24 @@ public class PortraitBehaviour : GazeManager
 
     public override void ChangeOnGaze()
     {
-        if(sceneIndex == 0)
+        if(sceneIndex == 1)
         {
             switch(gM.GameState())
             {
                 case 0:
-                    StartCoroutine(LoadNextScene(1));
+                    StartCoroutine(LoadNextScene(2));
                     break;
                 case 1:
-                    StartCoroutine(LoadNextScene(2));
+                    StartCoroutine(LoadNextScene(3));
                     break;
             }
             
-        }else if(sceneIndex == 1)
-        {
-            StartCoroutine(LoadNextScene(0));
         }else if(sceneIndex == 2)
         {
-            StartCoroutine(LoadNextScene(0));
+            StartCoroutine(LoadNextScene(1));
+        }else if(sceneIndex == 3)
+        {
+            StartCoroutine(LoadNextScene(1));
         }
     }
 
