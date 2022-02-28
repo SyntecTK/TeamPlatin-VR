@@ -6,6 +6,7 @@ public class LevelHints : MonoBehaviour
 {
     private GameObject teddy;
     private GameObject poster;
+    private GameObject snowman;
 
     private GameManager gM;
 
@@ -14,19 +15,26 @@ public class LevelHints : MonoBehaviour
         gM = GameObject.Find("GameManager").GetComponent<GameManager>();
         teddy = transform.GetChild(0).gameObject;
         poster = transform.GetChild(1).gameObject;
+        snowman = transform.GetChild(2).gameObject;
 
         switch(gM.GameState())
         {
             case 0:
                 poster.SetActive(false);
                 teddy.SetActive(true);
-                Debug.Log("GameState: " + gM.GameState());
+                snowman.SetActive(false);
                 break;
             case 1:
                 poster.SetActive(true);
                 teddy.SetActive(false);
-                Debug.Log("GameState: " + gM.GameState());
+                snowman.SetActive(false);
                 break;
+            case 2:
+                poster.SetActive(false);
+                teddy.SetActive(false);
+                snowman.SetActive(true);
+                break;
+
         }
     }
 }

@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.Find("XR Rig");
         player.transform.position = GameObject.Find("StartingMovePoint").transform.position;
-
-        playerPos = player.transform.position;
-        playerPos = new Vector3(playerPos.x, playerPos.y - 1.5f, playerPos.z);
+        //playerPos = player.transform.position;
+        //playerPos = new Vector3(playerPos.x, playerPos.y, playerPos.z);
+        //player.transform.position = playerPos;
         
         gazeObject = null;
         newspaperArray[0] = true;
@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Getter und Setter für die GameState
+    //Nach dem GameState richten sich viele Objekte im Office-Level
+    //Da dieses als eine Art Hub dient und nach jedem Level neu besucht wird
     public int GameState()
     {
         return gameState;
@@ -59,6 +62,8 @@ public class GameManager : MonoBehaviour
         gameState++;
     }
 
+    //Was passieren soll, nachdem das Puzzle im ersten Raum gelöst wird
+    //Es ertönt Musik, das Gemälde zeigt das Bild vom nächsten Level und ist betretbar
     public void FirstPuzzleWin(AudioClip winSound, Material newSkybox)
     {
         GameObject.Find("Portrait_Bild").GetComponent<Renderer>().enabled = true;
@@ -73,12 +78,15 @@ public class GameManager : MonoBehaviour
         RenderSettings.skybox = newSkybox;
     }
 
+    //Diese Methode nutzen die Movepoints um den Player zu bewegen
     public void MovePlayer(Vector3 location)
     {
-        player.transform.position = new Vector3(location.x, location.y, location.z);
+        player.transform.position = new Vector3(location.x, location.y - 1f, location.z);
         playerPos = player.transform.position;
     }
 
+    //Wird benutzt um Objekte leicht nach oben und unten zu bewegen
+    //die Position auf der Y-Achse bewegt sich dabei quasi auf einer Sinuskurve hoch und runter
     public void FloatAnimation(GameObject obj, float value, float floatSpeed, float rotSpeed)
     {
         Vector3 pos = obj.transform.position;
@@ -89,6 +97,7 @@ public class GameManager : MonoBehaviour
         obj.transform.Rotate(Time.deltaTime * rotSpeed, 0, 0, Space.Self); 
     }
 
+    //Getter und Setter dafür, ob man den Teddy im Zweiten Level aufgehoben hat
     public void PickUpTeddy()
     {
         teddyCollected = true;
@@ -104,6 +113,8 @@ public class GameManager : MonoBehaviour
         gearsCollected = true;
     }
 
+    //Setzt einen bool in einem bool Array, welcher die Aufgehobenen Blöcke verfolgt,
+    // auf True dabei ist der Index, der des Aufgehobenen Blocks
     public void PickUpBlock(int blockNumber)
     {
         pickedUpBlocks[blockNumber] = true;
@@ -119,6 +130,7 @@ public class GameManager : MonoBehaviour
         return pickedUpBlocks[blockNumber];
     }
 
+    //Überprüft, ob alle Blöcke aufgesammelt wurden
     public bool CheckBlockPuzzle()
     {
         for(int i = 0; i < placedBlocks.Length; i++)

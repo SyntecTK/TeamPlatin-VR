@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class GazeManager : MonoBehaviour
 {
+    //Von dem GazeManager soll jedes Script erben, welches auf einem Objekt mit GazeInteraktion liegt
+    //Dieser ist nach dem Tutorial aus diesem Kurs aufgebaut,
+    //nur dass er noch den GameManager initialisiert
+    
     public Image gazeImage;
     public float duration;
 

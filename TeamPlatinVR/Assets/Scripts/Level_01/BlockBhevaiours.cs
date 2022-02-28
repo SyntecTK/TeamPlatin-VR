@@ -35,12 +35,12 @@ public class BlockBhevaiours : GazeManager
                 DisableBlock();
                 break;
         }
+        GetComponent<AudioSource>().Play();
     }
 
     private void DisableBlock()
     {
         GetComponent<Renderer>().enabled = false;
         GetComponent<BoxCollider>().enabled = false;
-        Debug.Log(this.name + " disabled");
     }
 }
